@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+</head>
+<body>
+    <svg id="demoXY" width="200" height="200"></svg>
+
+    
+    <script>
+        //Our larger node data
+         var nodeData = [
+            {id: "D3",       position: [2, 0], parentPosition: [2, 0]},
+            {id: "Shapes",   position: [1, 1], parentPosition: [2, 0]},
+            {id: "Scales",   position: [3, 1], parentPosition: [2, 0]},
+            {id: "Links",    position: [0, 2], parentPosition: [1, 1]},
+            {id: "Areas",    position: [1, 2], parentPosition: [1, 1]},
+            {id: "Arcs",     position: [2, 2], parentPosition: [1, 1]},
+            {id: "Ordinal",  position: [3, 2], parentPosition: [3, 1]},
+            {id: "Quantize", position: [4, 2], parentPosition: [3, 1]}];
+    
+        //x and y scales
+       var xScale = d3.scaleLinear().domain([0, 4]).range([25, 175]);
+       var yScale = d3.scaleLinear().domain([0,2]).range([25, 175]);
+    
+        // Adding the circle nodes
+        d3.select("#demoXY")
+            .selectAll(".circle")
+            .data(nodeData)
+            .join("circle")
+            .attr("cx", d => xScale(d.position[0]))
+            .attr("cy", d => yScale(d.position[1]))
+            .classed("circle", true);
+    
+        // Our link generator with the new .x() and .y() definitions
+        var linkGen = d3.linkVertical()
+            .source(d => d.position)
+            .target(d => d.parentPosition)
+            .x(d => xScale(d[0]))
+            .y(d => yScale(d[1]));
+    
+        // Adding the links
+        d3.select("#demoXY")
+              .selectAll("path")
+              .data(nodeData)
+              .join("path")
+              .attr("d", linkGen)
+              .classed("link", true);
+                 
+        // Adding the text nodes
+        d3.select("#demoXY")
+              .selectAll("text")
+              .data(nodeData)
+              .join("text")
+              .attr("font-size", "10px")
+              .attr("text-anchor", "middle")
+              .attr("x", function(d) { 
+                    if(d.position[1] == 2 || d.position[1] == 0)
+                        return xScale(d.position[0]);
+                    var xOffset = xScale(d.position[0]);
+                    if(xOffset > 100)
+                        return xScale(d.position[0]) +25;
+                    return xScale(d.position[0]) -25;
+                    })
+              .attr("y", function(d) { 
+                    if(d.position[1] == 2)
+                        return yScale(d.position[1]) + 15;
+                    if(d.position[1] == 1)
+                        return yScale(d.position[1])
+                    return yScale(d.position[1]) - 10
+                    })
+              .text(d => d.id);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "nodes": [
+    { "id": "hpc572", "group": 3 },
+    { "id": "hpc139", "group": 3 },
+    { "id": "hpc580", "group": 3 },
+    { "id": "hpc193", "group": 3 },
+    { "id": "IBSW_33", "group": 4 },
+    { "id": "IBSW_08", "group": 4 },
+    { "id": "IBSW_11", "group": 4 },
+    { "id": "IBB1_SW_L04", "group": 5 },
+    { "id": "IBB1_SW_S09", "group": 5 },
+    { "id": "IBB1_SW_L06", "group": 5 }
+  ],
+  "links": [
+    { "source": "hpc572", "target": "IBSW_33", "value": 0.13681854719407727 },
+    { "source": "IBSW_33", "target": "hpc580", "value": 0.6971658740498741 },
+    { "source": "hpc139", "target": "IBSW_08", "value": 0.86971537016892 },
+    {
+      "source": "IBSW_08",
+      "target": "IBB1_SW_L04",
+      "value": 0.7767386036079946
+    },
+    {
+      "source": "IBB1_SW_L04",
+      "target": "IBB1_SW_S09",
+      "value": 0.9635873952944969
+    },
+    {
+      "source": "IBB1_SW_S09",
+      "target": "IBB1_SW_L06",
+      "value": 0.7930577972150805
+    },
+    {
+      "source": "IBB1_SW_L06",
+      "target": "IBSW_11",
+      "value": 0.01037219123033628
+    },
+    { "source": "IBSW_11", "target": "hpc193", "value": 0.667546199296791 }
+  ]
+}

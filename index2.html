@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      svg {
+        background-color: lightgray;
+      }
+
+      .box {
+        stroke: white;
+        stroke-width: 2px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      const squareWidth = 700; // Width of the square
+      const squareHeight = 700; // Height of the square
+      const rows = 16; // Number of rows
+      const cols = 16; // Number of columns
+
+      // Read the CSV file
+      d3.text("device_counter.csv").then((text) => {
+        const data = d3.csvParseRows(text, (d) => {
+          return d.map((value) => {
+            const columns = value.split(":");
+            // console.log(columns[0],+columns[2],+columns[3])
+            return {
+              Column1: columns[0],
+              Column2: +columns[2],
+              Column3: +columns[3],
+            };
+          });
+        });
+        console.log(data)
+        // Calculate the ratio of the second column to the third column
+        // data.forEach((d) => {
+        //   console.log(d.Column2,d.Column3)
+        //   d.ratio = d.Column2 / d.Column3;
+        // });
+        // console.log(data)
+
+        // Create an SVG container
+        const svg = d3
+          .select("body")
+          .append("svg")
+          .attr("width", squareWidth)
+          .attr("height", squareHeight);
+
+        // Create rectangles and fill them
+        const rects = svg
+          .selectAll("rect")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("x", (d, i) => (i % cols) * (squareWidth / cols))
+          .attr("y", (d, i) => Math.floor(i / cols) * (squareHeight / rows))
+          .attr("width", squareWidth / cols)
+          .attr("height", squareHeight / rows)
+          .attr("rx", 4)
+          .attr("ry", 4)
+          .style("stroke-width", 4)
+          .style("stroke", "white")
+          .style("opacity", 0.8)
+          .style("fill", (d,i) => `rgb(${255 - d[0].Column2/d[0].Column3 * 30}, 0, ${d[0].Column2/d[0].Column3 * 30})`)
+          .classed("box", true);
+
+        // Add text inside each rectangle
+        const texts = svg
+          .selectAll("text")
+          .data(data)
+          .enter()
+          .append("text")
+          .attr("x", (d, i) => (i % cols) * (squareWidth / cols) + 5)
+          .attr("y", (d, i) =>
+            Math.floor(i / cols) * (squareHeight / rows) + (squareHeight / rows) / 2
+          )
+          .text((d) => truncateText(d[0].Column1,squareWidth/cols - 10))
+          .style("font-size", "12px")
+          .style("fill", "white")
+          .style("color","white")
+          .style("pointer-events", "none");
+
+          function truncateText(text, maxLength) {
+            return text.substring(0, 6) 
+        }
+      });
+    </script>
+  </body>
+</html>
