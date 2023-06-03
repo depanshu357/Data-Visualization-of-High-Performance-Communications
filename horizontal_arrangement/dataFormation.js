@@ -1,7 +1,70 @@
 const fs = require("fs");
 
 const inputFile = "nodes_link_path.csv";
-const outputFile = "output.json";
+const inputFile2 = "device_counter.csv";
+const outputFile = "output2.json";
+
+var sumMap = new Map();
+
+fs.readFile(inputFile2, "utf8", (error, csvData) => {
+  if (error) {
+    console.error("Error reading CSV file:", error);
+    return;
+  }
+
+  // Split the CSV data into rows
+  const data = csvData.split("\n");
+  // console.log(data);
+
+  for (var i = 0; i < data.length - 1; i++) {
+    var row = data[i];
+    // Split the row by colon delimiter
+    var values = row.split(":");
+
+    // Get the values from the second and third columns
+    var value1 = parseInt(values[2]) / 100000000;
+    var value2 = parseInt(values[3]) / 100000000;
+    // console.log(value1,value2)
+
+    // Normalize the values
+    var normalizedValue = normalizeValue(value1 + value2);
+    // var normalizedValue2 = normalizeValue(value2);
+    // console.log(normalizedValue);
+
+    // Get the value from the first column
+    var key = values[0];
+
+    // Calculate the sum and store it in the map
+    if (sumMap.has(key)) {
+      // If the key already exists in the map, add the normalized values
+      var sum = sumMap.get(key);
+      sum[0] += normalizedValue;
+      // sum[0] += normalizedValue2;
+    } else {
+      // If the key doesn't exist in the map, initialize the sum
+      sumMap.set(key, [normalizedValue]);
+    }
+  }
+
+  // Output the sums stored in the map
+  sumMap.forEach(function (sum, key) {
+    console.log(sumMap.get(key)[0])
+    console.log(typeof key)
+  });
+
+  // console.log(sumMap);
+});
+// console.log(sumMap.get("hpc183"))
+function normalizeValue(value) {
+  // Normalize the value between 1 and 100
+  var min = 0; // minimum value in the range
+  var max = 100; // maximum value in the range
+
+  // Normalize the value using min-max normalization formula
+  var normalizedValue = ((value - min) / (max - min)) * (100 - 1) + 1;
+  if (normalizedValue < max) normalizedValue = max;
+  return Math.round(normalizedValue);
+}
 
 // Read data from the input CSV file
 fs.readFile(inputFile, "utf8", (error, csvData) => {
@@ -17,49 +80,81 @@ fs.readFile(inputFile, "utf8", (error, csvData) => {
   const links = [];
   const uniqueNodeIds = new Set(); // To keep track of unique node IDs
   let groupValue = 5;
-  for(let i =0;i<= 888;i++){
+  for (let i = 0; i <= 888; i++) {
     let paddedNumber = ("000" + i).slice(-3);
-    let nodeId = "hpc"+paddedNumber;
+    let nodeId = "hpc" + paddedNumber;
     groupValue = 4;
-    const node = { id: nodeId, group: groupValue };
-    nodes.push(node)
+    console.log(nodeId)
+
+    var value = [];
+    if (sumMap.has(nodeId)) {
+      value = sumMap.get(nodeId);
+      console.log("heu")
+    } else {
+      value = [0];
+    }
+    console.log(value);
+
+    // console.log(typeof value)
+    const node = { id: nodeId, group: groupValue, value: value[0] };
+    nodes.push(node);
   }
-  for(let i=1;i<=52;i++){
+  for (let i = 1; i <= 52; i++) {
     let paddedNumber = ("00" + i).slice(-2);
-    let nodeId  = "IBSW_"+paddedNumber;
+    let nodeId = "IBSW_" + paddedNumber;
     groupValue = 3;
-    const node = {id:nodeId, group:groupValue};
+    let value;
+    if (sumMap.has(nodeId)) {
+      value = sumMap.get(nodeId);
+    } else value = [0];
+    const node = { id: nodeId, group: groupValue, value: value[0] };
     nodes.push(node);
   }
-  for(let i=1;i<=27;i++){
+  for (let i = 1; i <= 27; i++) {
     let paddedNumber = ("00" + i).slice(-2);
-    let nodeId  = "IBB1_SW_L"+paddedNumber;
+    let nodeId = "IBB1_SW_L" + paddedNumber;
     groupValue = 2;
-    const node = {id:nodeId, group:groupValue};
+    let value;
+    if (sumMap.has(nodeId)) {
+      value = sumMap.get(nodeId);
+    } else value = [0];
+    const node = { id: nodeId, group: groupValue, value: value[0] };
     nodes.push(node);
   }
-  for(let i=1;i<=27;i++){
+  for (let i = 1; i <= 27; i++) {
     let paddedNumber = ("00" + i).slice(-2);
-    let nodeId  = "IBB2_SW_L"+paddedNumber;
+    let nodeId = "IBB2_SW_L" + paddedNumber;
     groupValue = 2;
-    const node = {id:nodeId, group:groupValue};
+    let value;
+    if (sumMap.has(nodeId)) {
+      value = sumMap.get(nodeId);
+    } else value = [0];
+    const node = { id: nodeId, group: groupValue, value: value[0] };
     nodes.push(node);
   }
-  for(let i=1;i<=18;i++){
+  for (let i = 1; i <= 18; i++) {
     let paddedNumber = ("00" + i).slice(-2);
-    let nodeId  = "IBB1_SW_S"+paddedNumber;
+    let nodeId = "IBB1_SW_S" + paddedNumber;
     groupValue = 1;
-    const node = {id:nodeId, group:groupValue};
+    let value;
+    if (sumMap.has(nodeId)) {
+      value = sumMap.get(nodeId);
+    } else value = [0];
+    const node = { id: nodeId, group: groupValue, value: value[0] };
     nodes.push(node);
   }
-  for(let i=1;i<=18;i++){
+  for (let i = 1; i <= 18; i++) {
     let paddedNumber = ("00" + i).slice(-2);
-    let nodeId  = "IBB2_SW_S"+paddedNumber;
+    let nodeId = "IBB2_SW_S" + paddedNumber;
     groupValue = 1;
-    const node = {id:nodeId, group:groupValue};
+    let value;
+    if (sumMap.has(nodeId)) {
+      value = sumMap.get(nodeId);
+    } else value = [0];
+    const node = { id: nodeId, group: groupValue, value: value[0] };
     nodes.push(node);
   }
-//   for(let i)
+  //   for(let i)
 
   // Split the CSV data into rows
   const rows = csvData.split("\n");
@@ -68,36 +163,7 @@ fs.readFile(inputFile, "utf8", (error, csvData) => {
   rows.forEach((row) => {
     // Split the row into columns
     const columns = row.split(":");
-    
-
-    // Extract the node IDs from the first column
-    // Extract the node IDs from the fourth column, including switches
-    // const nodeIds = columns[3].split("->").map((node) => node.trim());
-
-    // Extract the connection details from the second column
-    // console.log(columns);
     const connections = columns[3].split("->");
-
-        // Create nodes and links data structure
-        // nodeIds.forEach((nodeId) => {
-        //   if (!uniqueNodeIds.has(nodeId)) {
-        //     uniqueNodeIds.add(nodeId);
-    
-        //     var groupValue = 5;
-        //     if (nodeId[0] === "h") {
-        //       groupValue = 4;
-        //     } else if (nodeId[3] === "W") {
-        //       groupValue = 3;
-        //     } else if (nodeId[3] === "1") {
-        //       groupValue = 2;
-        //     }else if(nodeId[3] === '2'){
-        //       groupValue = 1;
-        //     }
-    
-        //     const node = { id: nodeId, group: groupValue }; // Assuming group value is always 3 for nodes
-        //     nodes.push(node);
-        //   }
-        // });
 
     // Create links data structure
     for (let i = 0; i < connections.length - 1; i++) {
@@ -110,6 +176,8 @@ fs.readFile(inputFile, "utf8", (error, csvData) => {
     }
   });
 
+  // console.log(nodes);
+
   // Create the JSON object
   const jsonData = {
     nodes: nodes,
@@ -120,7 +188,7 @@ fs.readFile(inputFile, "utf8", (error, csvData) => {
   const jsonString = JSON.stringify(jsonData);
 
   // Display the JSON string
-  console.log(jsonString);
+  // console.log(jsonString);
 
   // Write the output CSV content to the output file
   fs.writeFile(outputFile, jsonString, "utf8", (error) => {
