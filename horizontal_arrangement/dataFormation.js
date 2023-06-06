@@ -6,6 +6,9 @@ const outputFile = "output2.json";
 
 var sumMap = new Map();
 
+var maxValue1 = 0;
+var maxValue2 = 0;
+
 fs.readFile(inputFile2, "utf8", (error, csvData) => {
   if (error) {
     console.error("Error reading CSV file:", error);
@@ -15,6 +18,22 @@ fs.readFile(inputFile2, "utf8", (error, csvData) => {
   // Split the CSV data into rows
   const data = csvData.split("\n");
   // console.log(data);
+
+  for (var i = 0; i < data.length - 1; i++) {
+    var row = data[i];
+    // Split the row by colon delimiter
+    var values = row.split(":");
+
+    // Get the values from the second and third columns
+    var value1 = parseInt(values[2]) / 100000000;
+    var value2 = parseInt(values[3]) / 100000000;
+    // console.log(value1,value2)
+
+    maxValue1 = Math.max(value1, maxValue1);
+    maxValue2 = Math.max(value2, maxValue2);
+  }
+
+  console.log(maxValue1, maxValue2);
 
   for (var i = 0; i < data.length - 1; i++) {
     var row = data[i];
@@ -47,10 +66,10 @@ fs.readFile(inputFile2, "utf8", (error, csvData) => {
   }
 
   // Output the sums stored in the map
-  sumMap.forEach(function (sum, key) {
-    console.log(sumMap.get(key)[0])
-    console.log(typeof key)
-  });
+  // sumMap.forEach(function (sum, key) {
+  //   console.log(sumMap.get(key)[0])
+  //   console.log(typeof key)
+  // });
 
   // console.log(sumMap);
 });
@@ -58,7 +77,7 @@ fs.readFile(inputFile2, "utf8", (error, csvData) => {
 function normalizeValue(value) {
   // Normalize the value between 1 and 100
   var min = 0; // minimum value in the range
-  var max = 100; // maximum value in the range
+  var max = maxValue1 + maxValue2; // maximum value in the range
 
   // Normalize the value using min-max normalization formula
   var normalizedValue = ((value - min) / (max - min)) * (100 - 1) + 1;
@@ -84,20 +103,21 @@ fs.readFile(inputFile, "utf8", (error, csvData) => {
     let paddedNumber = ("000" + i).slice(-3);
     let nodeId = "hpc" + paddedNumber;
     groupValue = 4;
-    console.log(nodeId)
+    // console.log(nodeId)
 
     var value = [];
     if (sumMap.has(nodeId)) {
       value = sumMap.get(nodeId);
-      console.log("heu")
+      // console.log("heu")
     } else {
       value = [0];
     }
-    console.log(value);
+    // console.log(value);
 
     // console.log(typeof value)
     const node = { id: nodeId, group: groupValue, value: value[0] };
     nodes.push(node);
+    console.log(node);
   }
   for (let i = 1; i <= 52; i++) {
     let paddedNumber = ("00" + i).slice(-2);
