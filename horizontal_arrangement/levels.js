@@ -39,14 +39,33 @@ var tooltip = d3
 var link;
 
 var file1 = "output.json";
-var file2 = "output3.json"
-
-
+var file2 = "output3.json";
 
 d3.json("output3.json", function (error, graph) {
   if (error) throw error;
 
-   link = svg
+  const maxValues = graph.maxValues;
+  console.log(maxValues);
+
+  // Define the color scale
+  const colorScaleHPC = d3
+    .scaleLinear()
+    .domain([0, maxValues[1]]) // Specify the minimum and maximum values in your range
+    .range(["lightcoral", "red"]); // Specify the desired color range
+  const colorScaleLeaf = d3
+    .scaleLinear()
+    .domain([0, maxValues[2]]) // Specify the minimum and maximum values in your range
+    .range(['#00FF00', '#008000']); // Specify the desired color range
+  const colorScaleDirector = d3
+    .scaleLinear()
+    .domain([0, maxValues[3]]) // Specify the minimum and maximum values in your range
+    .range(['#ADD8E6', '#000080']); // Specify the desired color range
+  const colorScaleSpine = d3
+    .scaleLinear()
+    .domain([0, maxValues[4]]) // Specify the minimum and maximum values in your range
+    .range(['#8A2BE2', '#DDA0DD']); // Specify the desired color range
+
+  link = svg
     .append("g")
     .attr("class", "links")
     .selectAll("line")
@@ -56,7 +75,7 @@ d3.json("output3.json", function (error, graph) {
     .attr("stroke-width", function (d) {
       return 0.5;
     })
-    .attr("stroke","grey")
+    .attr("stroke", "grey");
 
   var node = svg
     .append("g")
@@ -75,22 +94,39 @@ d3.json("output3.json", function (error, graph) {
       return d.id.substring(0, 3) === "hpc";
     })
     .append("circle")
-    .attr("r", 2)
-    .attr("fill", function (d) {
-      return color(d.group);
-    });
+    .attr("r", 3.2)
+    .attr("fill", (d, i) => colorScaleHPC(d.value));
 
   // Append rectangles for other nodes
   node
     .filter(function (d) {
-      return d.id.substring(0, 3) !== "hpc";
+      return d.id.substring(0, 4) === "IBSW";
     })
     .append("rect")
     .attr("width", 10)
     .attr("height", 10)
-    .attr("fill", function (d) {
-      return color(d.group);
-    });
+    .attr("fill", (d, i) => colorScaleLeaf(d.value));
+
+
+  node
+    .filter(function (d) {
+      return d.id[8] === "L";
+    })
+    .append("rect")
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("fill", (d, i) => colorScaleDirector(d.value));
+
+
+  node
+    .filter(function (d) {
+      return d.id[8] === "S";
+    })
+    .append("rect")
+    .attr("width", 10)
+    .attr("height", 10)
+    .attr("fill", (d, i) => colorScaleSpine(d.value));
+
 
   node.append("title").text(function (d) {
     return d.id;
@@ -213,14 +249,14 @@ d3.json("output3.json", function (error, graph) {
 
 function handleMouseOver(d) {
   console.log(d);
-  
+
   // Highlight the links connected to the hovered node
-  link.attr("stroke", function(linkData) {
+  link.attr("stroke", function (linkData) {
     if (linkData.source === d || linkData.target === d) {
       return "red";
-    } else return "grey"
+    } else return "grey";
   });
-  
+
   // Show tooltip on mouseover
   tooltip.transition().duration(200).style("opacity", 0.9);
   tooltip.html(d.id);
@@ -240,7 +276,7 @@ function handleMouseOut(d) {
   d3.select(this).style("stroke", "white");
 
   // Remove the highlight from the links
-  
+
   link.attr("stroke", "grey");
   // Hide tooltip on mouseout
   tooltip.transition().duration(200).style("opacity", 0);

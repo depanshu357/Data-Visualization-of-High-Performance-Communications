@@ -5,8 +5,6 @@ const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
 const outputFile = "output3.json";
 
-var maxValue1 = 0;
-var maxValue2 = 0;
 
 // Function to read and process a CSV file
 function processCSVFile(filePath) {
@@ -17,6 +15,12 @@ function processCSVFile(filePath) {
         return;
       }
       var sumMap = new Map();
+      var maxValue  = -1;
+      var maxValuehpc = -1;
+      var maxValueLeaf = -1;
+      var maxValueDirector = -1;
+      var maxValueSpine = -1;
+      var minValue = 0;
 
       // Split the CSV data into rows
       const data = csvData.split("\n");
@@ -32,6 +36,18 @@ function processCSVFile(filePath) {
 
         // Normalize the values
         var normalizedValue = value1 + value2;
+        if(values[0][0]==='h'){
+            if(maxValuehpc < normalizedValue) maxValuehpc = normalizedValue;
+        }else if(values[0][3]==='W'){
+          if(maxValueLeaf < normalizedValue) maxValueLeaf = normalizedValue;
+        }else if(values[0][8]==='L'){
+          if(maxValueDirector < normalizedValue) maxValueDirector = normalizedValue;
+        }else if(values[0][8]==='S'){
+          if(maxValueSpine < normalizedValue) maxValueSpine = normalizedValue;
+        }
+        if(maxValue < normalizedValue){
+          maxValue = normalizedValue;
+        }
 
         // Get the value from the first column
         var key = values[0];
@@ -40,18 +56,18 @@ function processCSVFile(filePath) {
         if (sumMap.has(key)) {
           // If the key already exists in the map, add the normalized values
           var sum = sumMap.get(key);
-          sum[0] += normalizedValue;
+          sum[0] = normalizedValue;
         } else {
           // If the key doesn't exist in the map, initialize the sum
           sumMap.set(key, [normalizedValue]);
         }
       }
-      resolve(sumMap);
+      resolve({sumMap,maxValue,maxValuehpc,maxValueLeaf,maxValueDirector,maxValueSpine});
     });
   });
 }
 
-function processSecondCSVFile(sumMap, filePath) {
+function processSecondCSVFile(sumMap, filePath,maxValue,maxValuehpc,maxValueLeaf,maxValueDirector,maxValueSpine) {
   return new Promise((resolve, reject) => {
     fs.readFile(filePath, "utf8", (error, csvData) => {
       if (error) {
@@ -59,6 +75,7 @@ function processSecondCSVFile(sumMap, filePath) {
         return;
       }
       // Initialize nodes and links arrays
+      const maxValues = [maxValue,maxValuehpc,maxValueLeaf,maxValueDirector,maxValueSpine];
       const nodes = [];
       const links = [];
       let groupValue = 5;
@@ -154,6 +171,7 @@ function processSecondCSVFile(sumMap, filePath) {
 
       // Create the JSON object
       const jsonData = {
+        maxValues : maxValues,
         nodes: nodes,
         links: links,
       };
@@ -171,7 +189,8 @@ processCSVFile(inputFile2)
     console.log('Processed first file:', firstFileData);
     // Process the second CSV file after processing the first file
     // return processCSVFile("secondFile.csv");
-    return processSecondCSVFile(firstFileData, inputFile);
+    const {sumMap,maxValue,maxValuehpc,maxValueLeaf,maxValueDirector,maxValueSpine} = firstFileData;
+    return processSecondCSVFile(sumMap, inputFile,maxValue,maxValuehpc,maxValueLeaf,maxValueDirector,maxValueSpine);
   })
   .then((secondFileData) => {
     var json = JSON.parse(secondFileData)
