@@ -45,7 +45,7 @@ d3.json("output3.json", function (error, graph) {
   if (error) throw error;
 
   const maxValues = graph.maxValues;
-  console.log(maxValues);
+  // console.log(maxValues);
 
   // Define the color scale
   const colorScaleHPC = d3
@@ -103,8 +103,8 @@ d3.json("output3.json", function (error, graph) {
       return d.id.substring(0, 4) === "IBSW";
     })
     .append("rect")
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("width", 12)
+    .attr("height", 12)
     .attr("fill", (d, i) => colorScaleLeaf(d.value));
 
 
@@ -113,8 +113,8 @@ d3.json("output3.json", function (error, graph) {
       return d.id[8] === "L";
     })
     .append("rect")
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("width", 12)
+    .attr("height", 12)
     .attr("fill", (d, i) => colorScaleDirector(d.value));
 
 
@@ -123,8 +123,8 @@ d3.json("output3.json", function (error, graph) {
       return d.id[8] === "S";
     })
     .append("rect")
-    .attr("width", 10)
-    .attr("height", 10)
+    .attr("width", 17)
+    .attr("height", 17)
     .attr("fill", (d, i) => colorScaleSpine(d.value));
 
 
@@ -248,7 +248,7 @@ d3.json("output3.json", function (error, graph) {
 });
 
 function handleMouseOver(d) {
-  console.log(d);
+  // console.log(d);
 
   // Highlight the links connected to the hovered node
   link.attr("stroke", function (linkData) {
@@ -284,7 +284,7 @@ function handleMouseOut(d) {
 
 function dragstarted(d) {
   if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-  console.log(d);
+  // console.log(d);
   d.fx = d.x;
   d.fy = d.y;
 }
