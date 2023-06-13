@@ -1,16 +1,18 @@
 const fs = require("fs");
 const util = require("util");
 
-const inputFilesforPath = [
-  "nodes_link_path_1.csv",
-  "nodes_link_path_2.csv",
-  "nodes_link_path_3.csv",
-];
-const inputFilesforCounter = [
-  "device_counters_1.csv",
-  "device_counters_2.csv",
-  "device_counters_3.csv",
-];
+const inputFilesforPath = ["nodes_link_path_1.csv"];
+const inputFilesforCounter = ["device_counters_1.csv"];
+// const inputFilesforPath = [
+//   "nodes_link_path_1.csv",
+//   "nodes_link_path_2.csv",
+//   "nodes_link_path_3.csv",
+// ];
+// const inputFilesforCounter = [
+//   "device_counters_1.csv",
+//   "device_counters_2.csv",
+//   "device_counters_3.csv",
+// ];
 
 const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
@@ -111,19 +113,94 @@ function readFile(pathFile, counterFile) {
         ];
         const nodes = [];
         const links = [];
-        let groupValue = 5;
-        for (let i = 0; i <= 888; i++) {
-          let paddedNumber = ("000" + i).slice(-3);
-          let nodeId = "hpc" + paddedNumber;
-          groupValue = 4;
-          var value = [];
-          if (sumMap.has(nodeId)) {
-            value = sumMap.get(nodeId);
-          } else {
-            value = [0];
+
+        const rows = csvData.split("\n");
+        let arrayofLeafSwitches = [];
+        for (let i = 0; i <= 52; i++) {
+          const innerArray = [];
+          innerArray.push(0);
+          arrayofLeafSwitches.push(innerArray);
+        }
+        var countValues =0;
+        for (let i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          var columns = row.split(":");
+          var connections;
+          if (columns.length > 1) {
+            connections = columns[3].split("->");
+          } else continue;
+          for (let j = 0; j < connections.length - 1; j++) {
+            // console.log(connections);
+            let node1 = connections[j].trim();
+            let node2 = connections[j + 1].trim();
+            if (node1.substring(0, 3) === "hpc") {
+              const lastTwoLetters = node2.substring(node2.length - 2);
+              const number1 = parseInt(lastTwoLetters, 10);
+              const lastThree = node1.substring(node1.length - 3);
+              const number2 = parseInt(lastThree, 10);
+              if (!arrayofLeafSwitches[number1].includes(number2)) {
+                arrayofLeafSwitches[number1].push(number2);
+                countValues++;
+              }
+            }else if(node2.substring(0,3) === "hpc"){
+              const lastTwoLetters = node1.substring(node1.length - 2);
+              const number1 = parseInt(lastTwoLetters, 10);
+              const lastThree = node1.substring(node2.length - 3);
+              const number2 = parseInt(lastThree, 10);
+              if (!arrayofLeafSwitches[number1].includes(number2)) {
+                arrayofLeafSwitches[number1].push(number2);
+                countValues++;
+              }
+            }
           }
-          const node = { id: nodeId, group: groupValue, value: value[0] };
-          nodes.push(node);
+        }
+        maxValues.push(countValues);
+        // console.log(arrayofLeafSwitches);
+        // Split the CSV data into rows
+        // Iterate over each row
+        for (let i = 0; i < rows.length; i++) {
+          // Split the row into columns
+          var row = rows[i];
+          const columns = row.split(":");
+          // console.log(columns)
+          var connections;
+          if (columns.length > 1) {
+            connections = columns[3].split("->");
+          } else continue;
+
+          // Create links data structure
+          for (let i = 0; i < connections.length - 1; i++) {
+            var source = connections[i].trim();
+            var target = connections[i+1].trim();
+            if(source.substring(0,3) === "hpc"){
+              const lastTwoLetters = target.substring(target.length - 2);
+              let nodeId = "Bhpc" + lastTwoLetters; 
+              source = nodeId;
+            }
+            if(target.substring(0,3) === "hpc"){
+              const lastTwoLetters = source.substring(source.length - 2);
+              let nodeId = "Bhpc" + lastTwoLetters; 
+              target = nodeId;
+            }
+            const link = {
+              source: source,
+              target: target,
+              value: 1, // Assign a random value to the link (you can modify this as per your requirement)
+            };
+            if(!links.includes(link)){
+              links.push(link);
+            }
+          }
+        }
+
+        let groupValue = 5;
+        for(let i =0;i<=52;i++){
+          let paddedNumber = ("00" + i).slice(-2);
+          let nodeId = "Bhpc" + paddedNumber;
+          groupValue = 4;
+          var value = arrayofLeafSwitches[i].length - 1;
+          const node = { id: nodeId, group: groupValue, value: value };
+          nodes.push(node); 
         }
         for (let i = 1; i <= 52; i++) {
           let paddedNumber = ("00" + i).slice(-2);
@@ -180,30 +257,6 @@ function readFile(pathFile, counterFile) {
           const node = { id: nodeId, group: groupValue, value: value[0] };
           nodes.push(node);
         }
-        // Split the CSV data into rows
-        const rows = csvData.split("\n");
-        // Iterate over each row
-        for(let i =0; i<rows.length;i++){
-          // Split the row into columns
-          var row = rows[i];
-          const columns = row.split(":");
-          // console.log(columns)
-          var connections;
-          if(columns.length > 1){
-            connections = columns[3].split("->");
-          }else continue;
-
-          // Create links data structure
-          for (let i = 0; i < connections.length - 1; i++) {
-            const link = {
-              source: connections[i].trim(),
-              target: connections[i + 1].trim(),
-              value: Math.random(), // Assign a random value to the link (you can modify this as per your requirement)
-            };
-            links.push(link);
-          }
-        }
-
 
         // Create the JSON object
         const jsonData = {
@@ -222,8 +275,8 @@ function readFile(pathFile, counterFile) {
   // Process the first CSV file
   processCSVFile(counterFile)
     .then((firstFileData) => {
-      console.log("Processed first file:", firstFileData);
-      console.log(pathFile)
+      // console.log("Processed first file:", firstFileData);
+      console.log(pathFile);
       // Process the second CSV file after processing the first file
       // return processCSVFile("secondFile.csv");
       const {
@@ -246,7 +299,7 @@ function readFile(pathFile, counterFile) {
     })
     .then((secondFileData) => {
       var json = JSON.parse(secondFileData);
-      console.log("Processed second file:", json.links);
+      // console.log("Processed second file:", json.links);
 
       // Write the output CSV content to the output file
       fs.writeFile(outputFile, secondFileData, "utf8", (error) => {
@@ -270,7 +323,7 @@ function readFilesAtIntervals(interval) {
     if (index < inputFilesforPath.length) {
       const pathFile = inputFilesforPath[index];
       const counterFile = inputFilesforCounter[index];
-      readFile(pathFile,counterFile);
+      readFile(pathFile, counterFile);
       index++;
       setTimeout(readNextFile, interval);
     }

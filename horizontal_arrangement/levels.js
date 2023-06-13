@@ -88,14 +88,18 @@ d3.json("output3.json", function (error, graph) {
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
 
+
+    // var preValue = 0;
   // Append circles for nodes with "hpc" ID prefix
   node
     .filter(function (d) {
-      return d.id.substring(0, 3) === "hpc";
+      return d.id.substring(0, 4) === "Bhpc";
     })
-    .append("circle")
-    .attr("r", 3.2)
-    .attr("fill", (d, i) => colorScaleHPC(d.value));
+    .append("rect")
+    .attr("width", (d,i) => {if(d.value===0) return 0;return d.value*(width)/maxValues[5]})
+    .attr("height", 12)
+    .attr("fill", (d, i) => colorScaleHPC(d.value))
+    .style("stroke","white")
 
   // Append rectangles for other nodes
   node
@@ -142,20 +146,42 @@ d3.json("output3.json", function (error, graph) {
   var numNodes2 = 54;
   var numNodes3 = 52;
   var numNodes4 = 888;
+  var numNodes5 = 52;
 
   // Define the radius and center of the circle
   var radius = 300;
   var centerX = width / 2;
   var centerY = height / 2;
 
+  var previousWidthofBhpc = [];
+  // console.log(graph.nodes[0])
+  for(let i=0;i<=52;i++){
+    previousWidthofBhpc.push(0);
+  }
+  for(let i=0;i<=52;i++){
+    let row = graph.nodes[i];
+
+    let widthOfBhpc = (row.value)*(width)/maxValues[5];
+    if(i >0){
+      previousWidthofBhpc[i] = ( widthOfBhpc + previousWidthofBhpc[i - 1]);
+    }else previousWidthofBhpc[i] = (widthOfBhpc);
+  }
+  console.log(previousWidthofBhpc)
   function getXPos(d, i) {
-    const { id } = d;
-    if (id.substring(0, 3) === "hpc") {
-      var gap = width / ((numNodes4 + 1) * 1.1);
-      var lastThreeLetters = id.slice(-3);
-      var number = parseInt(lastThreeLetters, 10) % 222;
-      var x = centerX + 4 * number * gap - centerX / 1.1;
-      return x;
+    const { id ,value} = d;
+    if (id.substring(0, 4) === "Bhpc") {
+      var gap = width / ((numNodes5 + 1) * 1.1);
+      var lastTwoLetters = id.slice(-2);
+      var number = parseInt(lastTwoLetters, 10) ;
+      var widthOfBhpc = value*(width)/maxValues[5];
+      // number = Math.max(1,number)
+      var x = 0;
+      if(number > 0){
+         x = previousWidthofBhpc[number-1]  + widthOfBhpc/2;
+      }
+      // previousWidthofBhpc = previousWidthofBhpc + widthOfBhpc;
+      // console.log(x)
+      return x ;
     } else if (id[3] === "W") {
       var gap = width / (1.5 * numNodes3);
       var lastThreeLetters = id.slice(-2);
@@ -181,14 +207,14 @@ d3.json("output3.json", function (error, graph) {
   }
   function getYPos(d, i) {
     const { id } = d;
-    if (id.substring(0, 3) === "hpc") {
+    if (id.substring(0, 4) === "Bhpc") {
       var lastThreeLetters = id.slice(-3);
       var number = parseInt(lastThreeLetters, 10);
       let y = 400;
-      if (number <= 222) y = 400;
-      else if (number > 222 && number <= 444) y = 420;
-      else if (number > 444 && number <= 666) y = 440;
-      else if (number > 666) y = 460;
+      // if (number <= 222) y = 400;
+      // else if (number > 222 && number <= 444) y = 420;
+      // else if (number > 444 && number <= 666) y = 440;
+      // else if (number > 666) y = 460;
       return y;
     } else if (id[3] === "W") {
       return 300;
@@ -204,20 +230,20 @@ d3.json("output3.json", function (error, graph) {
     // Update the position of circles for "hpc" nodes
     node
       .filter(function (d) {
-        return d.id.substring(0, 3) === "hpc";
+        return d.id.substring(0, 4) === "Bhpc";
       })
-      .select("circle")
-      .attr("cx", function (d) {
-        return getXPos(d);
+      .select("rect")
+      .attr("x", function (d) {
+        return getXPos(d) - d.value*(width)/(2*maxValues[5]); // Offset half the width of the rectangle
       })
-      .attr("cy", function (d) {
-        return getYPos(d);
+      .attr("y", function (d) {
+        return getYPos(d) - 5; // Offset half the height of the rectangle
       });
 
     // Update the position of rectangles for non-"hpc" nodes
     node
       .filter(function (d) {
-        return d.id.substring(0, 3) !== "hpc";
+        return d.id.substring(0, 4) !== "Bhpc";
       })
       .select("rect")
       .attr("x", function (d) {
@@ -226,10 +252,6 @@ d3.json("output3.json", function (error, graph) {
       .attr("y", function (d) {
         return getYPos(d) - 5; // Offset half the height of the rectangle
       });
-
-    // Apply collision detection to prevent node overlap
-    // node.attr("cx", function (d) { return d.x = Math.max(15, Math.min(width - 15, d.x)); })
-    //     .attr("cy", function (d) { return d.y = Math.max(15, Math.min(height - 15, d.y)); });
 
     link
       .attr("x1", function (d, i) {
@@ -248,7 +270,7 @@ d3.json("output3.json", function (error, graph) {
 });
 
 function handleMouseOver(d) {
-  // console.log(d);
+  console.log(d.value);
 
   // Highlight the links connected to the hovered node
   link.attr("stroke", function (linkData) {
