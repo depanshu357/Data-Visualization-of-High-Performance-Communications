@@ -1,18 +1,18 @@
 const fs = require("fs");
 const util = require("util");
 
-const inputFilesforPath = ["nodes_link_path_1.csv"];
-const inputFilesforCounter = ["device_counters_1.csv"];
-// const inputFilesforPath = [
-//   "nodes_link_path_1.csv",
-//   "nodes_link_path_2.csv",
-//   "nodes_link_path_3.csv",
-// ];
-// const inputFilesforCounter = [
-//   "device_counters_1.csv",
-//   "device_counters_2.csv",
-//   "device_counters_3.csv",
-// ];
+// const inputFilesforPath = ["nodes_link_path_1.csv"];
+// const inputFilesforCounter = ["device_counters_1.csv"];
+const inputFilesforPath = [
+  "nodes_link_path_1.csv",
+  "nodes_link_path_2.csv",
+  "nodes_link_path_3.csv",
+];
+const inputFilesforCounter = [
+  "device_counters_1.csv",
+  "device_counters_2.csv",
+  "device_counters_3.csv",
+];
 
 const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
