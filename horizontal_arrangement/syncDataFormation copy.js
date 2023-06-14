@@ -2,22 +2,20 @@ const fs = require("fs");
 const util = require("util");
 
 // #####################################
-// For Old data 
+// For NEW data
 // New data requires another type of parsing
-// ##################################### 
+// #####################################
 
 const inputFilesforPath = ["./data/paths_table_100620231126.csv"];
 const inputFilesforCounter = ["./data/counters_table_100620231126.csv"];
-const inputFilesforJob = ["./data/jobs_table_100620231126.csv"]
-
+const inputFilesforJob = ["./data/jobs_table_100620231126.csv"];
 
 const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
 const outputFile = "./outputData/output3.json";
 
-function readFile(pathFile, counterFile,jobFile) {
-
-  function processJobFile(filePath,maxValues,nodes,links){
+function readFile(pathFile, counterFile, jobFile) {
+  function processJobFile(filePath, maxValues, nodes, links) {
     return new Promise((resolve, reject) => {
       fs.readFile(filePath, "utf8", (error, csvData) => {
         if (error) {
@@ -33,10 +31,19 @@ function readFile(pathFile, counterFile,jobFile) {
           var row = data[i];
           // Split the row by colon delimiter
           var values = row.split(" ");
-
-          var list = {JobID : values[0] ,UserName: values[1], QueueName: values[2],TotalNodes: values[3]}
+          // JobID UserName QueueName TotalNodes TotalCores RequiredTime JobState ElaspedTime NodeList
+          var list = {
+            JobID: values[0],
+            UserName: values[1],
+            QueueName: values[2],
+            TotalNodes: values[3],
+            TotalCores: values[4],
+            RequiredTime: values[5],
+            JobState: values[6],
+            ElapsedTime: values[7],
+            NodeList: values[8].split(",")
+          };
           table.push(list);
-
         }
         // Create the JSON object
         const jsonData = {
@@ -49,11 +56,9 @@ function readFile(pathFile, counterFile,jobFile) {
         // // Convert the JSON object to a JSON string
         const jsonString = JSON.stringify(jsonData);
         resolve(jsonString);
-        
       });
     });
   }
-
 
   // Function to read and process a CSV file
   function processCSVFile(filePath) {
@@ -157,7 +162,7 @@ function readFile(pathFile, counterFile,jobFile) {
           innerArray.push(0);
           arrayofLeafSwitches.push(innerArray);
         }
-        var countValues =0;
+        var countValues = 0;
         for (let i = 0; i < rows.length; i++) {
           var row = rows[i];
           var columns = row.split(" ");
@@ -175,7 +180,7 @@ function readFile(pathFile, counterFile,jobFile) {
             let node2 = connections[j + 1].trim();
             node2 = node2.split(":");
             node2 = node2[0];
-            if(node1 === node2) continue;
+            if (node1 === node2) continue;
             if (node1.substring(0, 3) === "hpc") {
               const lastTwoLetters = node2.substring(node2.length - 2);
               const number1 = parseInt(lastTwoLetters, 10);
@@ -185,7 +190,7 @@ function readFile(pathFile, counterFile,jobFile) {
                 arrayofLeafSwitches[number1].push(number2);
                 countValues++;
               }
-            }else if(node2.substring(0,3) === "hpc"){
+            } else if (node2.substring(0, 3) === "hpc") {
               const lastTwoLetters = node1.substring(node1.length - 2);
               const number1 = parseInt(lastTwoLetters, 10);
               const lastThree = node1.substring(node2.length - 3);
@@ -215,23 +220,23 @@ function readFile(pathFile, counterFile,jobFile) {
           for (let i = 0; i < connections.length - 1; i++) {
             let node1 = connections[i].trim();
             node1 = node1.split(":");
-            console.log(node1);
+            // console.log(node1);
             node1 = node1[0];
             let node2 = connections[i + 1].trim();
             node2 = node2.split(":");
             node2 = node2[0];
             // console.log(node1,node2);
-            if(node1 === node2) continue;
+            if (node1 === node2) continue;
             var source = node1;
             var target = node2;
-            if(source.substring(0,3) === "hpc"){
+            if (source.substring(0, 3) === "hpc") {
               const lastTwoLetters = target.substring(target.length - 2);
-              let nodeId = "Bhpc" + lastTwoLetters; 
+              let nodeId = "Bhpc" + lastTwoLetters;
               source = nodeId;
             }
-            if(target.substring(0,3) === "hpc"){
+            if (target.substring(0, 3) === "hpc") {
               const lastTwoLetters = source.substring(source.length - 2);
-              let nodeId = "Bhpc" + lastTwoLetters; 
+              let nodeId = "Bhpc" + lastTwoLetters;
               target = nodeId;
             }
             const link = {
@@ -239,20 +244,20 @@ function readFile(pathFile, counterFile,jobFile) {
               target: target,
               value: 1, // Assign a random value to the link (you can modify this as per your requirement)
             };
-            if(!links.includes(link)){
+            if (!links.includes(link)) {
               links.push(link);
             }
           }
         }
 
         let groupValue = 5;
-        for(let i =0;i<=52;i++){
+        for (let i = 0; i <= 52; i++) {
           let paddedNumber = ("00" + i).slice(-2);
           let nodeId = "Bhpc" + paddedNumber;
           groupValue = 4;
           var value = arrayofLeafSwitches[i].length - 1;
           const node = { id: nodeId, group: groupValue, value: value };
-          nodes.push(node); 
+          nodes.push(node);
         }
         for (let i = 1; i <= 52; i++) {
           let paddedNumber = ("00" + i).slice(-2);
@@ -320,7 +325,7 @@ function readFile(pathFile, counterFile,jobFile) {
         // // Convert the JSON object to a JSON string
         // const jsonString = JSON.stringify(jsonData);
         // resolve(jsonString);
-        resolve({maxValues,nodes,links});
+        resolve({ maxValues, nodes, links });
       });
     });
   }
@@ -349,13 +354,10 @@ function readFile(pathFile, counterFile,jobFile) {
         maxValueDirector,
         maxValueSpine
       );
-    }).then((secondFileData)=>{
-       const {
-        maxValues,
-        nodes,
-        links
-       } = secondFileData;
-       return processJobFile(jobFile,maxValues,nodes,links);
+    })
+    .then((secondFileData) => {
+      const { maxValues, nodes, links } = secondFileData;
+      return processJobFile(jobFile, maxValues, nodes, links);
     })
     .then((thirdFileData) => {
       var json = JSON.parse(thirdFileData);

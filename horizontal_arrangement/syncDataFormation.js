@@ -135,7 +135,6 @@ function readFile(pathFile, counterFile) {
             connections = columns[3].split("->");
           } else continue;
           for (let j = 0; j < connections.length - 1; j++) {
-            // console.log(connections);
             let node1 = connections[j].trim();
             let node2 = connections[j + 1].trim();
             if (node1.substring(0, 3) === "hpc") {
@@ -160,14 +159,12 @@ function readFile(pathFile, counterFile) {
           }
         }
         maxValues.push(countValues);
-        // console.log(arrayofLeafSwitches);
         // Split the CSV data into rows
         // Iterate over each row
         for (let i = 0; i < rows.length; i++) {
           // Split the row into columns
           var row = rows[i];
           const columns = row.split(":");
-          // console.log(columns)
           var connections;
           if (columns.length > 1) {
             connections = columns[3].split("->");

@@ -4,931 +4,2097 @@
       "JobID": "958425.un05",
       "UserName": "jyothi",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "33:24",
+      "NodeList": [
+        "hpc015",
+        "hpc059",
+        "hpc062",
+        "hpc066",
+        "hpc067",
+        "hpc068",
+        "hpc070",
+        "hpc069",
+        "hpc071",
+        "hpc100",
+        "hpc080",
+        "hpc082",
+        "hpc337",
+        "hpc345",
+        "hpc378",
+        "hpc388"
+      ]
     },
     {
       "JobID": "1003722.un05",
       "UserName": "dkgorai",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "65:13",
+      "NodeList": ["hpc708", "hpc717", "hpc727", "hpc728"]
     },
     {
       "JobID": "1008448.un05",
       "UserName": "yksri",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "11:26",
+      "NodeList": [
+        "hpc409",
+        "hpc006",
+        "hpc008",
+        "hpc025",
+        "hpc028",
+        "hpc033",
+        "hpc037",
+        "hpc224",
+        "hpc239",
+        "hpc248",
+        "hpc343",
+        "hpc352",
+        "hpc380",
+        "hpc383",
+        "hpc417",
+        "hpc466"
+      ]
     },
     {
       "JobID": "1006044.un05",
       "UserName": "prasenj",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "41:38",
+      "NodeList": ["hpc286", "hpc294", "hpc298", "hpc303", "hpc315", "hpc307"]
     },
     {
       "JobID": "1006050.un05",
       "UserName": "prasenj",
       "QueueName": "hyperthr",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "80",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "98:58",
+      "NodeList": ["hpc850", "hpc849"]
     },
     {
       "JobID": "1006651.un05",
       "UserName": "digamber",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "35:35",
+      "NodeList": ["hpc202", "hpc231", "hpc453", "hpc454", "hpc013", "hpc018"]
     },
     {
       "JobID": "1006708.un05",
       "UserName": "kavatar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "94:12",
+      "NodeList": ["hpc797", "hpc799"]
     },
     {
       "JobID": "1006742.un05",
       "UserName": "subhamr",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "12:16",
+      "NodeList": ["hpc764", "hpc759"]
     },
     {
       "JobID": "1006747.un05",
       "UserName": "prasenj",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "34:00",
+      "NodeList": ["hpc833", "hpc832"]
     },
     {
       "JobID": "1006748.un05",
       "UserName": "prasenj",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "34:06",
+      "NodeList": ["hpc637", "hpc635", "hpc643", "hpc644"]
     },
     {
       "JobID": "1006795.un05",
       "UserName": "mmkr20",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "58:43",
+      "NodeList": ["hpc095", "hpc109", "hpc163", "hpc181", "hpc468", "hpc470"]
     },
     {
       "JobID": "1006888.un05",
       "UserName": "subhamr",
       "QueueName": "hyperthr",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "80",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "34:13",
+      "NodeList": ["hpc844", "hpc856"]
     },
     {
       "JobID": "1006939.un05",
       "UserName": "bgovind",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "72:00",
+      "JobState": "R",
+      "ElapsedTime": "68:04",
+      "NodeList": ["hpc019", "hpc020", "hpc021", "hpc022", "hpc023", "hpc026"]
     },
     {
       "JobID": "1006989.un05",
       "UserName": "subhamr",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "30:36",
+      "NodeList": ["hpc426", "hpc427", "hpc429", "hpc430", "hpc432", "hpc433"]
     },
     {
       "JobID": "1006991.un05",
       "UserName": "subhamr",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "34:17",
+      "NodeList": ["hpc608", "hpc610", "hpc612", "hpc602"]
     },
     {
       "JobID": "1006996.un05",
       "UserName": "bhati",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "16:10",
+      "NodeList": ["hpc709", "hpc711", "hpc712", "hpc714"]
     },
     {
       "JobID": "1007001.un05",
       "UserName": "bhati",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "62:52",
+      "NodeList": ["hpc698", "hpc701"]
     },
     {
       "JobID": "1007049.un05",
       "UserName": "meesalas",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "95:24",
+      "NodeList": ["hpc823", "hpc836"]
     },
     {
       "JobID": "1007064.un05",
       "UserName": "abhigpt",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "92:09",
+      "NodeList": [
+        "hpc346",
+        "hpc476",
+        "hpc153",
+        "hpc459",
+        "hpc073",
+        "hpc075",
+        "hpc076",
+        "hpc207",
+        "hpc237",
+        "hpc249"
+      ]
     },
     {
       "JobID": "1007083.un05",
       "UserName": "bhavanap",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "44:45",
+      "NodeList": ["hpc751", "hpc752"]
     },
     {
       "JobID": "1007086.un05",
       "UserName": "bhavanap",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "46:32",
+      "NodeList": ["hpc487", "hpc494"]
     },
     {
       "JobID": "1007209.un05",
       "UserName": "rshreya",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "26:52",
+      "NodeList": ["hpc700", "hpc699"]
     },
     {
       "JobID": "1007532.un05",
       "UserName": "anandha2",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "83:59",
+      "NodeList": [
+        "hpc123",
+        "hpc125",
+        "hpc124",
+        "hpc126",
+        "hpc127",
+        "hpc128",
+        "hpc129",
+        "hpc130",
+        "hpc133",
+        "hpc160",
+        "hpc225",
+        "hpc262",
+        "hpc338",
+        "hpc376",
+        "hpc415",
+        "hpc134"
+      ]
     },
     {
       "JobID": "1007352.un05",
       "UserName": "subhendu",
       "QueueName": "large",
-      "TotalNodes": "12"
+      "TotalNodes": "12",
+      "TotalCores": "240",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "91:21",
+      "NodeList": [
+        "hpc264",
+        "hpc282",
+        "hpc398",
+        "hpc412",
+        "hpc029",
+        "hpc063",
+        "hpc243",
+        "hpc244",
+        "hpc266",
+        "hpc267",
+        "hpc311",
+        "hpc375"
+      ]
     },
     {
       "JobID": "1007387.un05",
       "UserName": "rshreya",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "05:56",
+      "NodeList": ["hpc647", "hpc638"]
     },
     {
       "JobID": "1007391.un05",
       "UserName": "bgovind",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "79:51",
+      "NodeList": ["hpc829", "hpc837"]
     },
     {
       "JobID": "1007398.un05",
       "UserName": "meesalas",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "82:24",
+      "NodeList": ["hpc607", "hpc606"]
     },
     {
       "JobID": "1007404.un05",
       "UserName": "soumyadi",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "90:37",
+      "NodeList": [
+        "hpc228",
+        "hpc230",
+        "hpc232",
+        "hpc434",
+        "hpc435",
+        "hpc471",
+        "hpc273",
+        "hpc064",
+        "hpc084",
+        "hpc085"
+      ]
     },
     {
       "JobID": "1007413.un05",
       "UserName": "shitansh",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "90:00",
+      "NodeList": [
+        "hpc270",
+        "hpc271",
+        "hpc274",
+        "hpc275",
+        "hpc401",
+        "hpc411",
+        "hpc112",
+        "hpc306",
+        "hpc308",
+        "hpc367"
+      ]
     },
     {
       "JobID": "1007423.un05",
       "UserName": "dpoddar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "79:09",
+      "NodeList": ["hpc790", "hpc793"]
     },
     {
       "JobID": "1007426.un05",
       "UserName": "razia",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "52:06",
+      "NodeList": [
+        "hpc441",
+        "hpc442",
+        "hpc443",
+        "hpc444",
+        "hpc449",
+        "hpc451",
+        "hpc455",
+        "hpc456",
+        "hpc457",
+        "hpc458"
+      ]
     },
     {
       "JobID": "1007429.un05",
       "UserName": "shashank",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "88:59",
+      "NodeList": [
+        "hpc431",
+        "hpc265",
+        "hpc219",
+        "hpc220",
+        "hpc221",
+        "hpc223",
+        "hpc268",
+        "hpc269",
+        "hpc381",
+        "hpc416"
+      ]
     },
     {
       "JobID": "1007446.un05",
       "UserName": "meesalas",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "76:58",
+      "NodeList": ["hpc781", "hpc772"]
     },
     {
       "JobID": "1007448.un05",
       "UserName": "anikm21",
       "QueueName": "large",
-      "TotalNodes": "7"
+      "TotalNodes": "7",
+      "TotalCores": "140",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "91:20",
+      "NodeList": [
+        "hpc386",
+        "hpc418",
+        "hpc420",
+        "hpc423",
+        "hpc425",
+        "hpc428",
+        "hpc463"
+      ]
     },
     {
       "JobID": "1007464.un05",
       "UserName": "anikm21",
       "QueueName": "large",
-      "TotalNodes": "7"
+      "TotalNodes": "7",
+      "TotalCores": "140",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "88:38",
+      "NodeList": [
+        "hpc419",
+        "hpc452",
+        "hpc054",
+        "hpc103",
+        "hpc131",
+        "hpc152",
+        "hpc391"
+      ]
     },
     {
       "JobID": "1007482.un05",
       "UserName": "abhigpt",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "39:23",
+      "NodeList": [
+        "hpc060",
+        "hpc280",
+        "hpc314",
+        "hpc318",
+        "hpc339",
+        "hpc350",
+        "hpc364",
+        "hpc373",
+        "hpc422",
+        "hpc440"
+      ]
     },
     {
       "JobID": "1007570.un05",
       "UserName": "krishnar",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "15:09",
+      "NodeList": ["hpc695", "hpc704"]
     },
     {
       "JobID": "1007662.un05",
       "UserName": "shaik22",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "71:18",
+      "NodeList": [
+        "hpc190",
+        "hpc214",
+        "hpc227",
+        "hpc335",
+        "hpc347",
+        "hpc014",
+        "hpc116",
+        "hpc208",
+        "hpc216",
+        "hpc250",
+        "hpc319",
+        "hpc322",
+        "hpc325",
+        "hpc329",
+        "hpc336",
+        "hpc351"
+      ]
     },
     {
       "JobID": "1007608.un05",
       "UserName": "subhadip",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "83:23",
+      "NodeList": ["hpc527", "hpc514"]
     },
     {
       "JobID": "1007620.un05",
       "UserName": "asarkar",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "74:00",
+      "NodeList": ["hpc692", "hpc694"]
     },
     {
       "JobID": "1007622.un05",
       "UserName": "smulewa2",
       "QueueName": "medium",
-      "TotalNodes": "3"
+      "TotalNodes": "3",
+      "TotalCores": "60",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "73:53",
+      "NodeList": ["hpc697", "hpc696", "hpc703"]
     },
     {
       "JobID": "1007623.un05",
       "UserName": "anurags2",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "67:31",
+      "NodeList": ["hpc828", "hpc831"]
     },
     {
       "JobID": "1007624.un05",
       "UserName": "smulewa2",
       "QueueName": "medium",
-      "TotalNodes": "3"
+      "TotalNodes": "3",
+      "TotalCores": "60",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "73:53",
+      "NodeList": ["hpc642", "hpc636", "hpc645"]
     },
     {
       "JobID": "1007630.un05",
       "UserName": "agajehan",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "73:44",
+      "NodeList": ["hpc563", "hpc547"]
     },
     {
       "JobID": "1007633.un05",
       "UserName": "agajehan",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "73:39",
+      "NodeList": ["hpc810", "hpc808"]
     },
     {
       "JobID": "1007644.un05",
       "UserName": "kavanmp2",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "73:00",
+      "NodeList": ["hpc535", "hpc543", "hpc537", "hpc538", "hpc540", "hpc544"]
     },
     {
       "JobID": "1007664.un05",
       "UserName": "krishnar",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "72:00",
+      "JobState": "R",
+      "ElapsedTime": "61:35",
+      "NodeList": ["hpc389", "hpc390", "hpc393", "hpc394", "hpc395", "hpc396"]
     },
     {
       "JobID": "1007669.un05",
       "UserName": "shaik22",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "72:27",
+      "NodeList": ["hpc671", "hpc677", "hpc679", "hpc680", "hpc683", "hpc674"]
     },
     {
       "JobID": "1007671.un05",
       "UserName": "bgovind",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "50:06",
+      "NodeList": ["hpc611", "hpc601"]
     },
     {
       "JobID": "1007673.un05",
       "UserName": "bgovind",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "48:12",
+      "NodeList": ["hpc771", "hpc773"]
     },
     {
       "JobID": "1007675.un05",
       "UserName": "meesalas",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "72:00",
+      "JobState": "R",
+      "ElapsedTime": "71:55",
+      "NodeList": ["hpc110", "hpc333", "hpc365", "hpc370", "hpc407", "hpc185"]
     },
     {
       "JobID": "1007677.un05",
       "UserName": "meesalas",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "72:00",
+      "JobState": "R",
+      "ElapsedTime": "14:03",
+      "NodeList": ["hpc117", "hpc155", "hpc048", "hpc253", "hpc254", "hpc255"]
     },
     {
       "JobID": "1007679.un05",
       "UserName": "meesalas",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "06:06",
+      "NodeList": ["hpc747", "hpc745"]
     },
     {
       "JobID": "1007681.un05",
       "UserName": "meesalas",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "46:31",
+      "NodeList": ["hpc517", "hpc521"]
     },
     {
       "JobID": "1007690.un05",
       "UserName": "prabodhr",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "48:13",
+      "NodeList": ["hpc312", "hpc348", "hpc392", "hpc397", "hpc111", "hpc120"]
     },
     {
       "JobID": "1007717.un05",
       "UserName": "abirlal",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "67:26",
+      "NodeList": [
+        "hpc051",
+        "hpc072",
+        "hpc078",
+        "hpc121",
+        "hpc157",
+        "hpc174",
+        "hpc213",
+        "hpc240",
+        "hpc368",
+        "hpc387"
+      ]
     },
     {
       "JobID": "1007726.un05",
       "UserName": "anshudas",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "69:00",
+      "NodeList": ["hpc626", "hpc627", "hpc628", "hpc630", "hpc632", "hpc624"]
     },
     {
       "JobID": "1007733.un05",
       "UserName": "anandha2",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "68:52",
+      "NodeList": ["hpc669", "hpc655", "hpc656", "hpc657", "hpc658", "hpc662"]
     },
     {
       "JobID": "1007740.un05",
       "UserName": "akmishr",
       "QueueName": "hyperthr",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "68:46",
+      "NodeList": ["hpc851", "hpc853"]
     },
     {
       "JobID": "1007742.un05",
       "UserName": "arnesh",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "68:35",
+      "NodeList": ["hpc668", "hpc663", "hpc667", "hpc665", "hpc666", "hpc660"]
     },
     {
       "JobID": "1007882.un05",
       "UserName": "kavanmp2",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "57:46",
+      "NodeList": [
+        "hpc011",
+        "hpc052",
+        "hpc086",
+        "hpc088",
+        "hpc099",
+        "hpc102",
+        "hpc105",
+        "hpc142",
+        "hpc149",
+        "hpc154",
+        "hpc205",
+        "hpc211",
+        "hpc242",
+        "hpc302",
+        "hpc362",
+        "hpc424"
+      ]
     },
     {
       "JobID": "1007770.un05",
       "UserName": "anshudas",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "68:11",
+      "NodeList": ["hpc681", "hpc684", "hpc686", "hpc687", "hpc675", "hpc676"]
     },
     {
       "JobID": "1007773.un05",
       "UserName": "vrahul",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "62:41",
+      "NodeList": [
+        "hpc016",
+        "hpc057",
+        "hpc151",
+        "hpc159",
+        "hpc192",
+        "hpc196",
+        "hpc209",
+        "hpc210",
+        "hpc299",
+        "hpc382"
+      ]
     },
     {
       "JobID": "1007776.un05",
       "UserName": "vthakkur",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "56:08",
+      "NodeList": [
+        "hpc260",
+        "hpc295",
+        "hpc296",
+        "hpc309",
+        "hpc445",
+        "hpc446",
+        "hpc447",
+        "hpc448",
+        "hpc477",
+        "hpc188"
+      ]
     },
     {
       "JobID": "1007777.un05",
       "UserName": "vthakkur",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "24:27",
+      "NodeList": [
+        "hpc233",
+        "hpc234",
+        "hpc437",
+        "hpc438",
+        "hpc170",
+        "hpc203",
+        "hpc320",
+        "hpc330",
+        "hpc344",
+        "hpc354"
+      ]
     },
     {
       "JobID": "1007779.un05",
       "UserName": "smulewa2",
       "QueueName": "medium",
-      "TotalNodes": "3"
+      "TotalNodes": "3",
+      "TotalCores": "60",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "67:52",
+      "NodeList": ["hpc726", "hpc734", "hpc736"]
     },
     {
       "JobID": "1007780.un05",
       "UserName": "shaik22",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "49:33",
+      "NodeList": [
+        "hpc236",
+        "hpc238",
+        "hpc436",
+        "hpc461",
+        "hpc113",
+        "hpc114",
+        "hpc115",
+        "hpc263",
+        "hpc281",
+        "hpc284",
+        "hpc287",
+        "hpc288",
+        "hpc289",
+        "hpc290",
+        "hpc292",
+        "hpc304"
+      ]
     },
     {
       "JobID": "1007795.un05",
       "UserName": "farahn",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "66:33",
+      "NodeList": ["hpc570", "hpc575", "hpc582", "hpc571", "hpc572", "hpc577"]
     },
     {
       "JobID": "1007818.un05",
       "UserName": "srinivas",
       "QueueName": "medium",
-      "TotalNodes": "3"
+      "TotalNodes": "3",
+      "TotalCores": "60",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "66:19",
+      "NodeList": ["hpc565", "hpc566", "hpc569"]
     },
     {
       "JobID": "1007828.un05",
       "UserName": "raihan",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "54:50",
+      "NodeList": ["hpc150", "hpc178", "hpc182", "hpc183", "hpc474", "hpc472"]
     },
     {
       "JobID": "1007829.un05",
       "UserName": "raihan",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "66:01",
+      "NodeList": ["hpc574", "hpc580", "hpc581", "hpc567"]
     },
     {
       "JobID": "1007846.un05",
       "UserName": "bgovind",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "72:00",
+      "JobState": "R",
+      "ElapsedTime": "30:36",
+      "NodeList": ["hpc469", "hpc473", "hpc475", "hpc480", "hpc478", "hpc482"]
     },
     {
       "JobID": "1007856.un05",
       "UserName": "tvinay",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "47:19",
+      "NodeList": ["hpc787", "hpc796"]
     },
     {
       "JobID": "1007864.un05",
       "UserName": "anurags2",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "47:18",
+      "NodeList": ["hpc788", "hpc801"]
     },
     {
       "JobID": "1007869.un05",
       "UserName": "krishnar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "18:20",
+      "NodeList": ["hpc749", "hpc754"]
     },
     {
       "JobID": "1007905.un05",
       "UserName": "abirlal",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "55:57",
+      "NodeList": ["hpc690", "hpc691"]
     },
     {
       "JobID": "1007906.un05",
       "UserName": "gmaurya2",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "53:29",
+      "NodeList": ["hpc774", "hpc770"]
     },
     {
       "JobID": "1007918.un05",
       "UserName": "gdurgesh",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "49:35",
+      "NodeList": ["hpc520", "hpc519", "hpc522", "hpc526", "hpc513", "hpc516"]
     },
     {
       "JobID": "1007603.un05",
       "UserName": "arnesh",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "00:28",
+      "NodeList": [
+        "hpc053",
+        "hpc272",
+        "hpc136",
+        "hpc162",
+        "hpc164",
+        "hpc175",
+        "hpc184",
+        "hpc191",
+        "hpc195",
+        "hpc252",
+        "hpc279",
+        "hpc310",
+        "hpc316",
+        "hpc342",
+        "hpc372",
+        "hpc374"
+      ]
     },
     {
       "JobID": "1008045.un05",
       "UserName": "anshudas",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "09:15",
+      "NodeList": [
+        "hpc313",
+        "hpc043",
+        "hpc044",
+        "hpc065",
+        "hpc089",
+        "hpc090",
+        "hpc091",
+        "hpc092",
+        "hpc094",
+        "hpc096",
+        "hpc098",
+        "hpc177",
+        "hpc179",
+        "hpc180",
+        "hpc186",
+        "hpc215"
+      ]
     },
     {
       "JobID": "1007939.un05",
       "UserName": "arnesh",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "49:13",
+      "NodeList": [
+        "hpc317",
+        "hpc341",
+        "hpc485",
+        "hpc486",
+        "hpc031",
+        "hpc032",
+        "hpc143",
+        "hpc144",
+        "hpc145",
+        "hpc146",
+        "hpc147",
+        "hpc148",
+        "hpc187",
+        "hpc194",
+        "hpc235",
+        "hpc278"
+      ]
     },
     {
       "JobID": "1007943.un05",
       "UserName": "krishnar",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "72:00",
+      "JobState": "R",
+      "ElapsedTime": "10:09",
+      "NodeList": ["hpc058", "hpc093", "hpc137", "hpc138", "hpc156", "hpc172"]
     },
     {
       "JobID": "1007944.un05",
       "UserName": "razia",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "08:33",
+      "NodeList": [
+        "hpc285",
+        "hpc038",
+        "hpc039",
+        "hpc040",
+        "hpc041",
+        "hpc081",
+        "hpc083",
+        "hpc323",
+        "hpc324",
+        "hpc331"
+      ]
     },
     {
       "JobID": "1007946.un05",
       "UserName": "bgovind",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "34:59",
+      "NodeList": ["hpc615", "hpc605"]
     },
     {
       "JobID": "1007953.un05",
       "UserName": "vrahul",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "48:22",
+      "NodeList": ["hpc817", "hpc815"]
     },
     {
       "JobID": "1007966.un05",
       "UserName": "bgovind",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "09:23",
+      "NodeList": ["hpc838", "hpc827"]
     },
     {
       "JobID": "1007979.un05",
       "UserName": "prabodhr",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "42:03",
+      "NodeList": ["hpc119", "hpc118", "hpc246", "hpc247", "hpc256", "hpc277"]
     },
     {
       "JobID": "1008002.un05",
       "UserName": "meesalas",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "10:39",
+      "NodeList": ["hpc524", "hpc528"]
     },
     {
       "JobID": "1008017.un05",
       "UserName": "gdurgesh",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "45:41",
+      "NodeList": ["hpc618", "hpc621", "hpc619", "hpc620", "hpc622", "hpc631"]
     },
     {
       "JobID": "1008031.un05",
       "UserName": "shobhitg",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "43:58",
+      "NodeList": ["hpc491", "hpc492"]
     },
     {
       "JobID": "1008346.un05",
       "UserName": "anshudas",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "04:15",
+      "NodeList": [
+        "hpc332",
+        "hpc009",
+        "hpc010",
+        "hpc030",
+        "hpc034",
+        "hpc077",
+        "hpc079",
+        "hpc122",
+        "hpc217",
+        "hpc257",
+        "hpc258",
+        "hpc276",
+        "hpc293",
+        "hpc321",
+        "hpc349",
+        "hpc379"
+      ]
     },
     {
       "JobID": "1008071.un05",
       "UserName": "tomjohny",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "48:00",
+      "JobState": "R",
+      "ElapsedTime": "41:48",
+      "NodeList": ["hpc515", "hpc525"]
     },
     {
       "JobID": "1008089.un05",
       "UserName": "farahn",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "41:12",
+      "NodeList": ["hpc495", "hpc496", "hpc497", "hpc498", "hpc501", "hpc502"]
     },
     {
       "JobID": "1008092.un05",
       "UserName": "dkgorai",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "41:11",
+      "NodeList": ["hpc603", "hpc609", "hpc613", "hpc604"]
     },
     {
       "JobID": "1008094.un05",
       "UserName": "dkgorai",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "41:06",
+      "NodeList": ["hpc661", "hpc653", "hpc654", "hpc659"]
     },
     {
       "JobID": "1008109.un05",
       "UserName": "mkankani",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "40:33",
+      "NodeList": ["hpc595", "hpc584"]
     },
     {
       "JobID": "1008110.un05",
       "UserName": "mkankani",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "40:31",
+      "NodeList": ["hpc625", "hpc629"]
     },
     {
       "JobID": "1008121.un05",
       "UserName": "mkankani",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "40:09",
+      "NodeList": ["hpc576", "hpc573"]
     },
     {
       "JobID": "1008155.un05",
       "UserName": "sayeed",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "39:13",
+      "NodeList": ["hpc542", "hpc531"]
     },
     {
       "JobID": "1008161.un05",
       "UserName": "ykedar",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "38:57",
+      "NodeList": ["hpc707", "hpc710"]
     },
     {
       "JobID": "1008180.un05",
       "UserName": "lawasmuk",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "37:13",
+      "NodeList": ["hpc766", "hpc768"]
     },
     {
       "JobID": "1008185.un05",
       "UserName": "lawasmuk",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "37:03",
+      "NodeList": ["hpc803", "hpc798"]
     },
     {
       "JobID": "1008198.un05",
       "UserName": "lawasmuk",
       "QueueName": "hyperthr",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "34:17",
+      "NodeList": ["hpc841", "hpc854"]
     },
     {
       "JobID": "1008200.un05",
       "UserName": "rrpandey",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "34:47",
+      "NodeList": ["hpc027", "hpc104", "hpc139", "hpc169", "hpc005", "hpc007"]
     },
     {
       "JobID": "1008237.un05",
       "UserName": "agajehan",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "25:34",
+      "NodeList": ["hpc646", "hpc648"]
     },
     {
       "JobID": "1008247.un05",
       "UserName": "digamber",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "25:01",
+      "NodeList": ["hpc809", "hpc805"]
     },
     {
       "JobID": "1008249.un05",
       "UserName": "digamber",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "23:20",
+      "NodeList": ["hpc746", "hpc753"]
     },
     {
       "JobID": "1008257.un05",
       "UserName": "bgovind",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "24:43",
+      "NodeList": ["hpc649", "hpc639"]
     },
     {
       "JobID": "1008260.un05",
       "UserName": "budhadit",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "22:48",
+      "NodeList": ["hpc568", "hpc579"]
     },
     {
       "JobID": "1008268.un05",
       "UserName": "kshiv",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "90:00",
+      "JobState": "R",
+      "ElapsedTime": "24:27",
+      "NodeList": ["hpc617", "hpc623", "hpc633", "hpc634"]
     },
     {
       "JobID": "1008305.un05",
       "UserName": "kavatar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "17:28",
+      "NodeList": ["hpc804", "hpc802"]
     },
     {
       "JobID": "1008311.un05",
       "UserName": "kmashok",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "01:59",
+      "NodeList": [
+        "hpc481",
+        "hpc189",
+        "hpc193",
+        "hpc241",
+        "hpc410",
+        "hpc414",
+        "hpc479",
+        "hpc097",
+        "hpc140",
+        "hpc326",
+        "hpc327",
+        "hpc328",
+        "hpc355",
+        "hpc356",
+        "hpc357",
+        "hpc358"
+      ]
     },
     {
       "JobID": "1008313.un05",
       "UserName": "kmashok",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "01:48",
+      "NodeList": [
+        "hpc361",
+        "hpc363",
+        "hpc366",
+        "hpc371",
+        "hpc403",
+        "hpc404",
+        "hpc405",
+        "hpc035",
+        "hpc036",
+        "hpc055",
+        "hpc056",
+        "hpc087",
+        "hpc101",
+        "hpc165",
+        "hpc167",
+        "hpc283"
+      ]
     },
     {
       "JobID": "1008314.un05",
       "UserName": "kmashok",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "22:38",
+      "NodeList": ["hpc592", "hpc597", "hpc600", "hpc596", "hpc589", "hpc590"]
     },
     {
       "JobID": "1008316.un05",
       "UserName": "kmashok",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "21:35",
+      "NodeList": ["hpc673", "hpc678", "hpc682", "hpc685", "hpc688", "hpc672"]
     },
     {
       "JobID": "1008317.un05",
       "UserName": "farahn",
       "QueueName": "large",
-      "TotalNodes": "16"
+      "TotalNodes": "16",
+      "TotalCores": "320",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "01:04",
+      "NodeList": [
+        "hpc297",
+        "hpc406",
+        "hpc413",
+        "hpc106",
+        "hpc158",
+        "hpc161",
+        "hpc168",
+        "hpc171",
+        "hpc173",
+        "hpc176",
+        "hpc197",
+        "hpc198",
+        "hpc201",
+        "hpc206",
+        "hpc359",
+        "hpc439"
+      ]
     },
     {
       "JobID": "1008318.un05",
       "UserName": "nidhig",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "22:19",
+      "NodeList": ["hpc591", "hpc599", "hpc583", "hpc586", "hpc587", "hpc593"]
     },
     {
       "JobID": "1008320.un05",
       "UserName": "shashank",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "22:15",
+      "NodeList": ["hpc559", "hpc560", "hpc561", "hpc548", "hpc550", "hpc551"]
     },
     {
       "JobID": "1008323.un05",
       "UserName": "jitum21",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "22:04",
+      "NodeList": ["hpc553", "hpc556", "hpc564", "hpc549", "hpc552", "hpc557"]
     },
     {
       "JobID": "1008325.un05",
       "UserName": "jitum21",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "22:01",
+      "NodeList": ["hpc742", "hpc614", "hpc558", "hpc562", "hpc554", "hpc702"]
     },
     {
       "JobID": "1008328.un05",
       "UserName": "kmashok",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "21:52",
+      "NodeList": ["hpc780", "hpc782"]
     },
     {
       "JobID": "1008329.un05",
       "UserName": "kmashok",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "21:50",
+      "NodeList": ["hpc811", "hpc818"]
     },
     {
       "JobID": "1008347.un05",
       "UserName": "arnesh",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "20:55",
+      "NodeList": ["hpc652", "hpc739", "hpc594", "hpc588", "hpc651", "hpc555"]
     },
     {
       "JobID": "1008350.un05",
       "UserName": "arnabh22",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "20:00",
+      "NodeList": ["hpc204", "hpc300", "hpc305", "hpc340", "hpc353", "hpc360"]
     },
     {
       "JobID": "1008372.un05",
       "UserName": "gdurgesh",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "19:11",
+      "NodeList": ["hpc500", "hpc503", "hpc507", "hpc509", "hpc510", "hpc511"]
     },
     {
       "JobID": "1008373.un05",
       "UserName": "shaik22",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "19:09",
+      "NodeList": ["hpc499", "hpc504", "hpc505", "hpc506", "hpc508", "hpc512"]
     },
     {
       "JobID": "1008374.un05",
       "UserName": "shaik22",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "19:06",
+      "NodeList": ["hpc546", "hpc532", "hpc534", "hpc536", "hpc578", "hpc616"]
     },
     {
       "JobID": "1008378.un05",
       "UserName": "raihan",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "18:40",
+      "NodeList": ["hpc713", "hpc715", "hpc716", "hpc719"]
     },
     {
       "JobID": "1008379.un05",
       "UserName": "raihan",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "18:02",
+      "NodeList": ["hpc251", "hpc334", "hpc017", "hpc132", "hpc141", "hpc229"]
     },
     {
       "JobID": "1008381.un05",
       "UserName": "farahn",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "18:36",
+      "NodeList": ["hpc789", "hpc800"]
     },
     {
       "JobID": "1008382.un05",
       "UserName": "farahn",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "18:34",
+      "NodeList": ["hpc812", "hpc820"]
     },
     {
       "JobID": "1008383.un05",
       "UserName": "farahn",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "07:32",
+      "NodeList": ["hpc529", "hpc530", "hpc533", "hpc539", "hpc541", "hpc545"]
     },
     {
       "JobID": "1008385.un05",
       "UserName": "farahn",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "18:19",
+      "NodeList": ["hpc743", "hpc755"]
     },
     {
       "JobID": "1008389.un05",
       "UserName": "farahn",
       "QueueName": "large",
-      "TotalNodes": "10"
+      "TotalNodes": "10",
+      "TotalCores": "200",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "09:57",
+      "NodeList": [
+        "hpc222",
+        "hpc042",
+        "hpc045",
+        "hpc046",
+        "hpc047",
+        "hpc049",
+        "hpc050",
+        "hpc245",
+        "hpc291",
+        "hpc301"
+      ]
     },
     {
       "JobID": "1008393.un05",
       "UserName": "krishnar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "18:02",
+      "NodeList": ["hpc760", "hpc761"]
     },
     {
       "JobID": "1008396.un05",
       "UserName": "krishnar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "02:33",
+      "NodeList": ["hpc748", "hpc758"]
     },
     {
       "JobID": "1008424.un05",
       "UserName": "ykedar",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "10:51",
+      "NodeList": ["hpc483", "hpc399", "hpc400", "hpc402", "hpc460", "hpc464"]
     },
     {
       "JobID": "1008425.un05",
       "UserName": "ykedar",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "10:49",
+      "NodeList": ["hpc484", "hpc012", "hpc212", "hpc259", "hpc261", "hpc384"]
     },
     {
       "JobID": "1008426.un05",
       "UserName": "arnesh",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "14:39",
+      "NodeList": ["hpc725", "hpc729", "hpc730", "hpc731", "hpc732", "hpc733"]
     },
     {
       "JobID": "1008431.un05",
       "UserName": "ykedar",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "05:34",
+      "NodeList": ["hpc723", "hpc724", "hpc735", "hpc737", "hpc738", "hpc740"]
     },
     {
       "JobID": "1008432.un05",
       "UserName": "ykedar",
       "QueueName": "medium",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "01:04",
+      "NodeList": ["hpc493", "hpc705", "hpc706", "hpc720", "hpc722", "hpc488"]
     },
     {
       "JobID": "1008437.un05",
       "UserName": "ddebasis",
       "QueueName": "large",
-      "TotalNodes": "6"
+      "TotalNodes": "6",
+      "TotalCores": "120",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "10:29",
+      "NodeList": ["hpc421", "hpc107", "hpc108", "hpc369", "hpc385", "hpc408"]
     },
     {
       "JobID": "1008438.un05",
       "UserName": "ddebasis",
       "QueueName": "large",
-      "TotalNodes": "8"
+      "TotalNodes": "8",
+      "TotalCores": "160",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "00:06",
+      "NodeList": [
+        "hpc377",
+        "hpc462",
+        "hpc465",
+        "hpc024",
+        "hpc061",
+        "hpc074",
+        "hpc135",
+        "hpc166"
+      ]
     },
     {
       "JobID": "1008439.un05",
       "UserName": "ddebasis",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "10:23",
+      "NodeList": ["hpc741", "hpc689", "hpc693", "hpc640"]
     },
     {
       "JobID": "1008440.un05",
       "UserName": "ddebasis",
       "QueueName": "medium",
-      "TotalNodes": "4"
+      "TotalNodes": "4",
+      "TotalCores": "80",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "03:33",
+      "NodeList": ["hpc641", "hpc518", "hpc523", "hpc490"]
     },
     {
       "JobID": "1008444.un05",
       "UserName": "krishnar",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "02:07",
+      "NodeList": ["hpc598", "hpc585"]
     },
     {
       "JobID": "1008451.un05",
       "UserName": "prasenj",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "10:26",
+      "NodeList": ["hpc763", "hpc762"]
     },
     {
       "JobID": "1008522.un05",
       "UserName": "asarkar",
       "QueueName": "small",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "120:0",
+      "JobState": "R",
+      "ElapsedTime": "01:52",
+      "NodeList": ["hpc779", "hpc775"]
     },
     {
       "JobID": "1008523.un05",
       "UserName": "ajayk21",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "01:42",
+      "NodeList": ["hpc664", "hpc670"]
     },
     {
       "JobID": "1008527.un05",
       "UserName": "mosesb",
       "QueueName": "mini",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "02:00",
+      "JobState": "R",
+      "ElapsedTime": "01:26",
+      "NodeList": ["hpc857", "hpc858"]
     },
     {
       "JobID": "1008545.un05",
       "UserName": "sayeed",
       "QueueName": "medium",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "96:00",
+      "JobState": "R",
+      "ElapsedTime": "00:04",
+      "NodeList": ["hpc718", "hpc721"]
     },
     {
       "JobID": "1008555.un05",
       "UserName": "krishnar",
       "QueueName": "mini",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "02:00",
+      "JobState": "R",
+      "ElapsedTime": "00:22",
+      "NodeList": ["hpc887", "hpc878"]
     },
     {
       "JobID": "1008566.un05",
       "UserName": "psinha21",
       "QueueName": "mini",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "02:00",
+      "JobState": "R",
+      "ElapsedTime": "00:11",
+      "NodeList": ["hpc886", "hpc879"]
     },
     {
       "JobID": "1008572.un05",
       "UserName": "bgovind",
       "QueueName": "mini",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "02:00",
+      "JobState": "R",
+      "ElapsedTime": "00:05",
+      "NodeList": ["hpc885", "hpc883"]
     },
     {
       "JobID": "1008574.un05",
       "UserName": "meesalas",
       "QueueName": "mini",
-      "TotalNodes": "2"
+      "TotalNodes": "2",
+      "TotalCores": "40",
+      "RequiredTime": "02:00",
+      "JobState": "R",
+      "ElapsedTime": "00:00",
+      "NodeList": ["hpc884", "hpc882"]
     }
   ],
   "maxValues": [

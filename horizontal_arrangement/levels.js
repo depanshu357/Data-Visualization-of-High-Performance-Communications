@@ -1,7 +1,7 @@
 var svg = d3.select("svg"),
   width = +svg.attr("width"),
   height = +svg.attr("height");
-svg.attr("height", 350).style("border", "2px solid red");
+svg.attr("height", 350);
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
