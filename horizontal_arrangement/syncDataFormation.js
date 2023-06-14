@@ -2,9 +2,9 @@ const fs = require("fs");
 const util = require("util");
 
 // #####################################
-// For Old data 
+// For Old data
 // New data requires another type of parsing
-// ##################################### 
+// #####################################
 
 // const inputFilesforPath = ["nodes_link_path_1.csv"];
 // const inputFilesforCounter = ["device_counters_1.csv"];
@@ -126,7 +126,7 @@ function readFile(pathFile, counterFile) {
           innerArray.push(0);
           arrayofLeafSwitches.push(innerArray);
         }
-        var countValues =0;
+        var countValues = 0;
         for (let i = 0; i < rows.length; i++) {
           var row = rows[i];
           var columns = row.split(":");
@@ -147,7 +147,7 @@ function readFile(pathFile, counterFile) {
                 arrayofLeafSwitches[number1].push(number2);
                 countValues++;
               }
-            }else if(node2.substring(0,3) === "hpc"){
+            } else if (node2.substring(0, 3) === "hpc") {
               const lastTwoLetters = node1.substring(node1.length - 2);
               const number1 = parseInt(lastTwoLetters, 10);
               const lastThree = node1.substring(node2.length - 3);
@@ -176,15 +176,15 @@ function readFile(pathFile, counterFile) {
           // Create links data structure
           for (let i = 0; i < connections.length - 1; i++) {
             var source = connections[i].trim();
-            var target = connections[i+1].trim();
-            if(source.substring(0,3) === "hpc"){
+            var target = connections[i + 1].trim();
+            if (source.substring(0, 3) === "hpc") {
               const lastTwoLetters = target.substring(target.length - 2);
-              let nodeId = "Bhpc" + lastTwoLetters; 
+              let nodeId = "Bhpc" + lastTwoLetters;
               source = nodeId;
             }
-            if(target.substring(0,3) === "hpc"){
+            if (target.substring(0, 3) === "hpc") {
               const lastTwoLetters = source.substring(source.length - 2);
-              let nodeId = "Bhpc" + lastTwoLetters; 
+              let nodeId = "Bhpc" + lastTwoLetters;
               target = nodeId;
             }
             const link = {
@@ -192,20 +192,20 @@ function readFile(pathFile, counterFile) {
               target: target,
               value: 1, // Assign a random value to the link (you can modify this as per your requirement)
             };
-            if(!links.includes(link)){
+            if (!links.includes(link)) {
               links.push(link);
             }
           }
         }
 
         let groupValue = 5;
-        for(let i =0;i<=52;i++){
+        for (let i = 0; i <= 52; i++) {
           let paddedNumber = ("00" + i).slice(-2);
           let nodeId = "Bhpc" + paddedNumber;
           groupValue = 4;
           var value = arrayofLeafSwitches[i].length - 1;
           const node = { id: nodeId, group: groupValue, value: value };
-          nodes.push(node); 
+          nodes.push(node);
         }
         for (let i = 1; i <= 52; i++) {
           let paddedNumber = ("00" + i).slice(-2);

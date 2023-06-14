@@ -8,13 +8,53 @@ const util = require("util");
 
 const inputFilesforPath = ["./data/paths_table_100620231126.csv"];
 const inputFilesforCounter = ["./data/counters_table_100620231126.csv"];
+const inputFilesforJob = ["./data/jobs_table_100620231126.csv"]
 
 
 const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
 const outputFile = "./outputData/output3.json";
 
-function readFile(pathFile, counterFile) {
+function readFile(pathFile, counterFile,jobFile) {
+
+  function processJobFile(filePath,maxValues,nodes,links){
+    return new Promise((resolve, reject) => {
+      fs.readFile(filePath, "utf8", (error, csvData) => {
+        if (error) {
+          console.error("Error reading CSV file:", error);
+          return;
+        }
+
+        // Split the CSV data into rows
+        const data = csvData.split("\n");
+        const table = [];
+
+        for (var i = 1; i < data.length - 1; i++) {
+          var row = data[i];
+          // Split the row by colon delimiter
+          var values = row.split(" ");
+
+          var list = {JobID : values[0] ,UserName: values[1], QueueName: values[2],TotalNodes: values[3]}
+          table.push(list);
+
+        }
+        // Create the JSON object
+        const jsonData = {
+          table: table,
+          maxValues: maxValues,
+          nodes: nodes,
+          links: links,
+        };
+
+        // // Convert the JSON object to a JSON string
+        const jsonString = JSON.stringify(jsonData);
+        resolve(jsonString);
+        
+      });
+    });
+  }
+
+
   // Function to read and process a CSV file
   function processCSVFile(filePath) {
     return new Promise((resolve, reject) => {
@@ -271,15 +311,16 @@ function readFile(pathFile, counterFile) {
         }
 
         // Create the JSON object
-        const jsonData = {
-          maxValues: maxValues,
-          nodes: nodes,
-          links: links,
-        };
+        // const jsonData = {
+        //   maxValues: maxValues,
+        //   nodes: nodes,
+        //   links: links,
+        // };
 
-        // Convert the JSON object to a JSON string
-        const jsonString = JSON.stringify(jsonData);
-        resolve(jsonString);
+        // // Convert the JSON object to a JSON string
+        // const jsonString = JSON.stringify(jsonData);
+        // resolve(jsonString);
+        resolve({maxValues,nodes,links});
       });
     });
   }
@@ -308,13 +349,20 @@ function readFile(pathFile, counterFile) {
         maxValueDirector,
         maxValueSpine
       );
+    }).then((secondFileData)=>{
+       const {
+        maxValues,
+        nodes,
+        links
+       } = secondFileData;
+       return processJobFile(jobFile,maxValues,nodes,links);
     })
-    .then((secondFileData) => {
-      var json = JSON.parse(secondFileData);
+    .then((thirdFileData) => {
+      var json = JSON.parse(thirdFileData);
       // console.log("Processed second file:", json.links);
 
       // Write the output CSV content to the output file
-      fs.writeFile(outputFile, secondFileData, "utf8", (error) => {
+      fs.writeFile(outputFile, thirdFileData, "utf8", (error) => {
         if (error) {
           console.error("Error writing to CSV file:", error);
           return;
@@ -335,7 +383,8 @@ function readFilesAtIntervals(interval) {
     if (index < inputFilesforPath.length) {
       const pathFile = inputFilesforPath[index];
       const counterFile = inputFilesforCounter[index];
-      readFile(pathFile, counterFile);
+      const jobFile = inputFilesforJob[index];
+      readFile(pathFile, counterFile, jobFile);
       index++;
       setTimeout(readNextFile, interval);
     }

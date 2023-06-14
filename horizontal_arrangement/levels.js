@@ -1,7 +1,7 @@
 var svg = d3.select("svg"),
   width = +svg.attr("width"),
   height = +svg.attr("height");
-svg.attr("height", window.innerHeight + 300)
+svg.attr("height", 350).style("border", "2px solid red");
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -36,8 +36,6 @@ var tooltip = d3
   .style("width", "100px")
   .style("height", "40px");
 
-
-
 var link;
 
 var file1 = "output.json";
@@ -57,15 +55,15 @@ d3.json(file2, function (error, graph) {
   const colorScaleLeaf = d3
     .scaleLinear()
     .domain([0, maxValues[2]]) // Specify the minimum and maximum values in your range
-    .range(['#00FF00', '#008000']); // Specify the desired color range
+    .range(["#00FF00", "#008000"]); // Specify the desired color range
   const colorScaleDirector = d3
     .scaleLinear()
     .domain([0, maxValues[3]]) // Specify the minimum and maximum values in your range
-    .range(['#ADD8E6', '#000080']); // Specify the desired color range
+    .range(["#ADD8E6", "#000080"]); // Specify the desired color range
   const colorScaleSpine = d3
     .scaleLinear()
     .domain([0, maxValues[4]]) // Specify the minimum and maximum values in your range
-    .range(['#8A2BE2', '#DDA0DD']); // Specify the desired color range
+    .range(["#8A2BE2", "#DDA0DD"]); // Specify the desired color range
 
   link = svg
     .append("g")
@@ -90,18 +88,20 @@ d3.json(file2, function (error, graph) {
     .on("mouseover", handleMouseOver)
     .on("mouseout", handleMouseOut);
 
-
-    // var preValue = 0;
+  // var preValue = 0;
   // Append circles for nodes with "hpc" ID prefix
   node
     .filter(function (d) {
       return d.id.substring(0, 4) === "Bhpc";
     })
     .append("rect")
-    .attr("width", (d,i) => {if(d.value===0) return 0;return d.value*(width)/maxValues[5]})
+    .attr("width", (d, i) => {
+      if (d.value === 0) return 0;
+      return (d.value * width) / maxValues[5];
+    })
     .attr("height", 12)
     .attr("fill", (d, i) => colorScaleHPC(d.value))
-    .style("stroke","white")
+    .style("stroke", "white");
 
   // Append rectangles for other nodes
   node
@@ -113,7 +113,6 @@ d3.json(file2, function (error, graph) {
     .attr("height", 12)
     .attr("fill", (d, i) => colorScaleLeaf(d.value));
 
-
   node
     .filter(function (d) {
       return d.id[5] === "L";
@@ -123,7 +122,6 @@ d3.json(file2, function (error, graph) {
     .attr("height", 12)
     .attr("fill", (d, i) => colorScaleDirector(d.value));
 
-
   node
     .filter(function (d) {
       return d.id[5] === "S";
@@ -132,7 +130,6 @@ d3.json(file2, function (error, graph) {
     .attr("width", 17)
     .attr("height", 17)
     .attr("fill", (d, i) => colorScaleSpine(d.value));
-
 
   node.append("title").text(function (d) {
     return d.id;
@@ -157,33 +154,33 @@ d3.json(file2, function (error, graph) {
 
   var previousWidthofBhpc = [];
   // console.log(graph.nodes[0])
-  for(let i=0;i<=52;i++){
+  for (let i = 0; i <= 52; i++) {
     previousWidthofBhpc.push(0);
   }
-  for(let i=0;i<=52;i++){
+  for (let i = 0; i <= 52; i++) {
     let row = graph.nodes[i];
 
-    let widthOfBhpc = (row.value)*(width)/maxValues[5];
-    if(i >0){
-      previousWidthofBhpc[i] = ( widthOfBhpc + previousWidthofBhpc[i - 1]);
-    }else previousWidthofBhpc[i] = (widthOfBhpc);
+    let widthOfBhpc = (row.value * width) / maxValues[5];
+    if (i > 0) {
+      previousWidthofBhpc[i] = widthOfBhpc + previousWidthofBhpc[i - 1];
+    } else previousWidthofBhpc[i] = widthOfBhpc;
   }
-  console.log(previousWidthofBhpc)
+  console.log(previousWidthofBhpc);
   function getXPos(d, i) {
-    const { id ,value} = d;
+    const { id, value } = d;
     if (id.substring(0, 4) === "Bhpc") {
       var gap = width / ((numNodes5 + 1) * 1.1);
       var lastTwoLetters = id.slice(-2);
-      var number = parseInt(lastTwoLetters, 10) ;
-      var widthOfBhpc = value*(width)/maxValues[5];
+      var number = parseInt(lastTwoLetters, 10);
+      var widthOfBhpc = (value * width) / maxValues[5];
       // number = Math.max(1,number)
       var x = 0;
-      if(number > 0){
-         x = previousWidthofBhpc[number-1]  + widthOfBhpc/2;
+      if (number > 0) {
+        x = previousWidthofBhpc[number - 1] + widthOfBhpc / 2;
       }
       // previousWidthofBhpc = previousWidthofBhpc + widthOfBhpc;
       // console.log(x)
-      return x ;
+      return x;
     } else if (id[4] === "W") {
       var gap = width / (1.5 * numNodes3);
       var lastThreeLetters = id.slice(-2);
@@ -212,18 +209,18 @@ d3.json(file2, function (error, graph) {
     if (id.substring(0, 4) === "Bhpc") {
       var lastThreeLetters = id.slice(-3);
       var number = parseInt(lastThreeLetters, 10);
-      let y = 400;
+      let y = 320;
       // if (number <= 222) y = 400;
       // else if (number > 222 && number <= 444) y = 420;
       // else if (number > 444 && number <= 666) y = 440;
       // else if (number > 666) y = 460;
       return y;
     } else if (id[4] === "W") {
-      return 300;
+      return 220;
     } else if (id[5] === "L") {
-      return 200;
+      return 120;
     } else if (id[5] === "S") {
-      return 100;
+      return 20;
     }
     return centerY;
   }
@@ -236,7 +233,7 @@ d3.json(file2, function (error, graph) {
       })
       .select("rect")
       .attr("x", function (d) {
-        return getXPos(d) - d.value*(width)/(2*maxValues[5]); // Offset half the width of the rectangle
+        return getXPos(d) - (d.value * width) / (2 * maxValues[5]); // Offset half the width of the rectangle
       })
       .attr("y", function (d) {
         return getYPos(d) - 5; // Offset half the height of the rectangle

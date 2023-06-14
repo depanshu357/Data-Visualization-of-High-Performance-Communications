@@ -25,19 +25,45 @@
             /* border: 1px solid #ccc; */
             pointer-events: none;
         }
+
         body{
             overflow-x: scroll;
         }
     </style>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <svg width="1500" height="700"></svg>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://papaparse.min.js"></script>
     <script src="levels.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="table.js"></script>
 </head>
 
 <body>
     <!-- <svg></svg> -->
     <!-- <div id="tooltip" class="tooltip"></div> -->
+    <button id="button">Row count</button>
+    <table id="example" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th></th>
+                <th>JobID</th>
+                <th>UserName</th>
+                <th>QueueName</th>
+                <th>TotalNodes</th>
+            </tr>
+        </thead>
+        <!-- <tfoot>
+            <tr>
+                <th></th>
+                <th>JobID</th>
+                <th>UserName</th>
+                <th>QueueName</th>
+                <th>TotalNodes</th>
+            </tr>
+        </tfoot> -->
+    </table>
 </body>
 
 </html>
