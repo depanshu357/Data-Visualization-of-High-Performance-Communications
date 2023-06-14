@@ -1,7 +1,7 @@
 var svg = d3.select("svg"),
   width = +svg.attr("width"),
   height = +svg.attr("height");
-svg.attr("height", window.innerHeight + 300);
+svg.attr("height", window.innerHeight + 300)
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
@@ -53,7 +53,7 @@ d3.json(file2, function (error, graph) {
   const colorScaleHPC = d3
     .scaleLinear()
     .domain([0, maxValues[1]]) // Specify the minimum and maximum values in your range
-    .range(["lightcoral", "red"]); // Specify the desired color range
+    .range(["#d4fc79", "#96e6a1"]); // Specify the desired color range
   const colorScaleLeaf = d3
     .scaleLinear()
     .domain([0, maxValues[2]]) // Specify the minimum and maximum values in your range
@@ -106,7 +106,7 @@ d3.json(file2, function (error, graph) {
   // Append rectangles for other nodes
   node
     .filter(function (d) {
-      return d.id.substring(0, 4) === "IBSW";
+      return d.id.substring(0, 5) === "IB_SW";
     })
     .append("rect")
     .attr("width", 12)
@@ -116,7 +116,7 @@ d3.json(file2, function (error, graph) {
 
   node
     .filter(function (d) {
-      return d.id[8] === "L";
+      return d.id[5] === "L";
     })
     .append("rect")
     .attr("width", 12)
@@ -126,7 +126,7 @@ d3.json(file2, function (error, graph) {
 
   node
     .filter(function (d) {
-      return d.id[8] === "S";
+      return d.id[5] === "S";
     })
     .append("rect")
     .attr("width", 17)
@@ -184,20 +184,20 @@ d3.json(file2, function (error, graph) {
       // previousWidthofBhpc = previousWidthofBhpc + widthOfBhpc;
       // console.log(x)
       return x ;
-    } else if (id[3] === "W") {
+    } else if (id[4] === "W") {
       var gap = width / (1.5 * numNodes3);
       var lastThreeLetters = id.slice(-2);
       var number = parseInt(lastThreeLetters, 10);
       var x = centerX + gap * number - centerX / 1.5;
       return x;
-    } else if (id[8] === "L") {
+    } else if (id[5] === "L") {
       var gap = width / (2 * numNodes2);
       var lastThreeLetters = id.slice(-2);
       var number = parseInt(lastThreeLetters, 10);
       if (id[3] === "2") number += 27;
       var x = centerX + gap * number - centerX / 2;
       return x;
-    } else if (id[8] === "S") {
+    } else if (id[5] === "S") {
       var gap = width / (2.2 * numNodes1);
       var lastThreeLetters = id.slice(-2);
       var number = parseInt(lastThreeLetters, 10);
@@ -218,11 +218,11 @@ d3.json(file2, function (error, graph) {
       // else if (number > 444 && number <= 666) y = 440;
       // else if (number > 666) y = 460;
       return y;
-    } else if (id[3] === "W") {
+    } else if (id[4] === "W") {
       return 300;
-    } else if (id[8] === "L") {
+    } else if (id[5] === "L") {
       return 200;
-    } else if (id[8] === "S") {
+    } else if (id[5] === "S") {
       return 100;
     }
     return centerY;
