@@ -41,9 +41,9 @@ var tooltip = d3
 var link;
 
 var file1 = "output.json";
-var file2 = "output3.json";
+var file2 = "./outputData/output3.json";
 
-d3.json("output3.json", function (error, graph) {
+d3.json(file2, function (error, graph) {
   if (error) throw error;
 
   const maxValues = graph.maxValues;

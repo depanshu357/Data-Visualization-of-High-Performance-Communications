@@ -1,22 +1,27 @@
 const fs = require("fs");
 const util = require("util");
 
+// #####################################
+// For Old data 
+// New data requires another type of parsing
+// ##################################### 
+
 // const inputFilesforPath = ["nodes_link_path_1.csv"];
 // const inputFilesforCounter = ["device_counters_1.csv"];
 const inputFilesforPath = [
-  "nodes_link_path_1.csv",
-  "nodes_link_path_2.csv",
-  "nodes_link_path_3.csv",
+  "./data/nodes_link_path_1.csv",
+  "./data/nodes_link_path_2.csv",
+  "./data/nodes_link_path_3.csv",
 ];
 const inputFilesforCounter = [
-  "device_counters_1.csv",
-  "device_counters_2.csv",
-  "device_counters_3.csv",
+  "./data/device_counters_1.csv",
+  "./data/device_counters_2.csv",
+  "./data/device_counters_3.csv",
 ];
 
 const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
-const outputFile = "output3.json";
+const outputFile = "./outputData/output3.json";
 
 function readFile(pathFile, counterFile) {
   // Function to read and process a CSV file
