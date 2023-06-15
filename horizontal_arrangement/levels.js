@@ -47,6 +47,8 @@ d3.json(file2, function (error, graph) {
   const maxValues = graph.maxValues;
   // console.log(maxValues);
 
+  
+
   // Define the color scale
   const colorScaleHPC = d3
     .scaleLinear()
@@ -266,7 +268,16 @@ d3.json(file2, function (error, graph) {
         return getYPos(d.target, i);
       });
   }
+  // console.log(jobMap);
+  
+  
 });
+
+
+
+// var row = document.querySelector()
+
+
 
 function handleMouseOver(d) {
   console.log(d.value);

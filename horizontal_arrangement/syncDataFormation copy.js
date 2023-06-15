@@ -15,7 +15,7 @@ const inputFile2 = "device_counter.csv";
 const outputFile = "./outputData/output3.json";
 
 function readFile(pathFile, counterFile, jobFile) {
-  function processJobFile(filePath, maxValues, nodes, links) {
+  function processJobFile(filePath, maxValues, nodes, links,jobs) {
     return new Promise((resolve, reject) => {
       fs.readFile(filePath, "utf8", (error, csvData) => {
         if (error) {
@@ -51,6 +51,7 @@ function readFile(pathFile, counterFile, jobFile) {
           maxValues: maxValues,
           nodes: nodes,
           links: links,
+          jobs : jobs,
         };
 
         // // Convert the JSON object to a JSON string
@@ -154,6 +155,9 @@ function readFile(pathFile, counterFile, jobFile) {
         ];
         const nodes = [];
         const links = [];
+        const jobs = [];
+
+        var jobmap = new Map();
 
         const rows = csvData.split("\n");
         let arrayofLeafSwitches = [];
@@ -203,6 +207,8 @@ function readFile(pathFile, counterFile, jobFile) {
           }
         }
         maxValues.push(countValues);
+
+        var jobMap = new Map();
         // console.log(arrayofLeafSwitches);
         // Split the CSV data into rows
         // Iterate over each row
@@ -216,6 +222,13 @@ function readFile(pathFile, counterFile, jobFile) {
             connections = columns[2].split("->");
           } else continue;
 
+
+          const key = columns[1];
+          
+          if (!jobMap.has(key)) {
+            jobMap.set(key, []);
+          }
+          const innerArray = jobMap.get(key);
           // Create links data structure
           for (let i = 0; i < connections.length - 1; i++) {
             let node1 = connections[i].trim();
@@ -227,6 +240,12 @@ function readFile(pathFile, counterFile, jobFile) {
             node2 = node2[0];
             // console.log(node1,node2);
             if (node1 === node2) continue;
+            if(!innerArray.includes(node1)){
+              innerArray.push(node1);
+            }
+            if(!innerArray.includes(node2)){
+              innerArray.push(node2);
+            }
             var source = node1;
             var target = node2;
             if (source.substring(0, 3) === "hpc") {
@@ -315,6 +334,13 @@ function readFile(pathFile, counterFile, jobFile) {
           nodes.push(node);
         }
 
+
+        // Iterate over the Map using a for...of loop
+        for (const [key, value] of jobMap) {
+          const pair = { job: key, nodes: value }; // Create an object with key-value pair
+          jobs.push(pair); // Store the object in the result array
+        }
+
         // Create the JSON object
         // const jsonData = {
         //   maxValues: maxValues,
@@ -325,7 +351,7 @@ function readFile(pathFile, counterFile, jobFile) {
         // // Convert the JSON object to a JSON string
         // const jsonString = JSON.stringify(jsonData);
         // resolve(jsonString);
-        resolve({ maxValues, nodes, links });
+        resolve({ maxValues, nodes, links, jobs });
       });
     });
   }
@@ -356,8 +382,8 @@ function readFile(pathFile, counterFile, jobFile) {
       );
     })
     .then((secondFileData) => {
-      const { maxValues, nodes, links } = secondFileData;
-      return processJobFile(jobFile, maxValues, nodes, links);
+      const { maxValues, nodes, links,jobs } = secondFileData;
+      return processJobFile(jobFile, maxValues, nodes, links,jobs);
     })
     .then((thirdFileData) => {
       var json = JSON.parse(thirdFileData);

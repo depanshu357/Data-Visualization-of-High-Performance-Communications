@@ -13,6 +13,9 @@ function format(d) {
   );
 }
 
+const jobMap = new Map();
+
+
 $(document).ready(function () {
   var table = $("#example").DataTable({
     ajax: {
@@ -63,4 +66,38 @@ $(document).ready(function () {
   $("#button").click(function () {
     alert(table.rows(".selected").data().length + " row(s) selected");
   });
+
+  
+
 });
+
+$(document).ready(function () {
+  d3.json(file2, function (error, graph) {
+    if (error) throw error;
+    for (const item of graph.jobs) {
+      const { job, nodes } = item;
+      jobMap.set(job, nodes);
+    }
+    // console.log(jobMap)
+    $("#example tbody").on("click", "tr", function () {
+      const sorting1Element = $(this).find("td.sorting_1");
+      const content = sorting1Element.text();
+      // console.log(content);
+      const arrayForKey = jobMap.get(content);
+      // console.log(arrayForKey)
+      link.attr("stroke", function (linkData) {
+        // return "green"
+        // console.log(linkData.source.id,content)
+        console.log(arrayForKey)
+        for(let i =0;i<arrayForKey.length;i++){
+          if (linkData.source.id == arrayForKey[i] || linkData.target.id == arrayForKey[i]) {
+            console.log(arrayForKey[i])
+            return "red";
+          }
+        }
+        // return "grey";
+      });
+      
+    });
+  })
+})
