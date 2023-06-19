@@ -5,6 +5,7 @@ svg.attr("height", 350);
 
 var color = d3.scaleOrdinal(d3.schemeCategory20);
 
+
 var simulation = d3
   .forceSimulation()
   .force("charge", d3.forceManyBody())
@@ -65,8 +66,8 @@ d3.json(file2, function (error, graph) {
   const colorScaleSpine = d3
     .scaleLinear()
     .domain([0, maxValues[4]]) // Specify the minimum and maximum values in your range
-    .range(["#8A2BE2", "#DDA0DD"]); // Specify the desired color range
-
+    .range(["#DDA0DD", "#8A2BE2"]); // Specify the desired color range
+//
   link = svg
     .append("g")
     .attr("class", "links")
@@ -295,8 +296,6 @@ function handleMouseOver(d) {
   // Show tooltip on mouseover
   tooltip.transition().duration(200).style("opacity", 0.9);
   tooltip.html(d.id);
-  // .style("left", (d3.event.pageX + 10) + "px")
-  // .style("top", (d3.event.pageY - 20) + "px");
 
   d3.select(this).style("stroke", "black").style("opacity", 1);
 }

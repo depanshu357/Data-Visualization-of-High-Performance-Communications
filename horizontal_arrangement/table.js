@@ -60,16 +60,20 @@ $(document).ready(function () {
   });
 
   $("#example tbody").on("click", "tr", function () {
+    $("#example tbody tr").removeClass("selected"); // Remove "selected" class from all rows
     $(this).toggleClass("selected");
   });
 
   $("#button").click(function () {
-    alert(table.rows(".selected").data().length + " row(s) selected");
+    // alert(table.rows(".selected").data());
+    console.log(table.rows(".selected").data().toArray());
   });
 
   
 
 });
+
+// ############### For highlighting of links on clicking a particular job id #########################
 
 $(document).ready(function () {
   d3.json(file2, function (error, graph) {
@@ -78,24 +82,20 @@ $(document).ready(function () {
       const { job, nodes } = item;
       jobMap.set(job, nodes);
     }
-    // console.log(jobMap)
     $("#example tbody").on("click", "tr", function () {
       const sorting1Element = $(this).find("td.sorting_1");
       const content = sorting1Element.text();
-      // console.log(content);
       const arrayForKey = jobMap.get(content);
-      // console.log(arrayForKey)
       link.attr("stroke", function (linkData) {
-        // return "green"
         // console.log(linkData.source.id,content)
-        console.log(arrayForKey)
+        // console.log(arrayForKey)
         for(let i =0;i<arrayForKey.length;i++){
           if (linkData.source.id == arrayForKey[i] || linkData.target.id == arrayForKey[i]) {
-            console.log(arrayForKey[i])
+            // console.log(arrayForKey[i])
             return "red";
           }
         }
-        // return "grey";
+        return "grey";
       });
       
     });

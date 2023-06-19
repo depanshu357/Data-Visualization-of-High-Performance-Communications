@@ -30,6 +30,7 @@
             overflow-x: scroll;
         }
     </style>
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <svg width="1500" height="700"></svg>
@@ -43,8 +44,25 @@
 <body>
     <!-- <svg></svg> -->
     <!-- <div id="tooltip" class="tooltip"></div> -->
+    <div class="description-box">
+        <div>
+            <span>Nodes Color Shading</span> <span class="swno"><span>|min</span><span>max|</span></span>
+        </div>
+        <div>
+            <span>Spine Switches</span> <span id="spinal" class="swno"></span>
+        </div>
+        <div>
+            <span>Director Switches</span> <span id="director" class="swno"></span>
+        </div>
+        <div>
+            <span>Leaf Switches</span> <span id="leaf" class="swno"></span>
+        </div>
+        <div>
+            <span>Nodes</span><span id="node" class="swno"></span>
+        </div>
+    </div>
     <button id="button">Row count</button>
-    <table id="example" class="display" style="width:100%">
+    <table id="example" class="display tableDesign" style="width:100%">
         <thead>
             <tr>
                 <th></th>
