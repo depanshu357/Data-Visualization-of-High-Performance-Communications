@@ -13,8 +13,17 @@ function format(d) {
   );
 }
 
-const jobMap = new Map();
+let colorIndex = 0;
+var colorArray = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF", "#FFA500", "#FFC0CB", "#00FF7F", "#9370DB"];
 
+
+function getDifferentColors(){
+    // colorIndex++;
+    colorIndex = colorIndex%10;
+    return colorArray[colorIndex];
+}
+
+const jobMap = new Map();
 
 $(document).ready(function () {
   var table = $("#example").DataTable({
@@ -29,14 +38,14 @@ $(document).ready(function () {
         data: null,
         defaultContent: "",
       },
-      { data: 'JobID' },
-      { data: 'UserName' },
-      { data: 'QueueName' },
-      { data: 'TotalNodes' },
-      { data: 'TotalCores' },
-      { data: 'RequiredTime' },
-      { data: 'JobState' },
-      { data: 'ElapsedTime' },
+      { data: "JobID" },
+      { data: "UserName" },
+      { data: "QueueName" },
+      { data: "TotalNodes" },
+      { data: "TotalCores" },
+      { data: "RequiredTime" },
+      { data: "JobState" },
+      { data: "ElapsedTime" },
     ],
     order: [[1, "asc"]],
     scrollY: 200,
@@ -47,7 +56,6 @@ $(document).ready(function () {
   $("#example tbody").on("click", "td.dt-control", function () {
     var tr = $(this).closest("tr");
     var row = table.row(tr);
-
     if (row.child.isShown()) {
       // This row is already open - close it
       row.child.hide();
@@ -68,9 +76,6 @@ $(document).ready(function () {
     // alert(table.rows(".selected").data());
     console.log(table.rows(".selected").data().toArray());
   });
-
-  
-
 });
 
 // ############### For highlighting of links on clicking a particular job id #########################
@@ -78,26 +83,44 @@ $(document).ready(function () {
 $(document).ready(function () {
   d3.json(file2, function (error, graph) {
     if (error) throw error;
+    
+    console.log(graph.jobs.length);
     for (const item of graph.jobs) {
       const { job, nodes } = item;
       jobMap.set(job, nodes);
     }
+    let selected = document.querySelector(".selected");
+
     $("#example tbody").on("click", "tr", function () {
       const sorting1Element = $(this).find("td.sorting_1");
       const content = sorting1Element.text();
+      // console.log(selected);
+      colorIndex++;
+    console.log(colorIndex)
       const arrayForKey = jobMap.get(content);
-      link.attr("stroke", function (linkData) {
-        // console.log(linkData.source.id,content)
-        // console.log(arrayForKey)
-        for(let i =0;i<arrayForKey.length;i++){
-          if (linkData.source.id == arrayForKey[i] || linkData.target.id == arrayForKey[i]) {
-            // console.log(arrayForKey[i])
-            return "red";
+      link
+        .attr("stroke", function (linkData) {
+          for (let i = 0; i < arrayForKey.length; i++) {
+            if (
+              linkData.source.id == arrayForKey[i] ||
+              linkData.target.id == arrayForKey[i]
+            ) {
+              return getDifferentColors();
+            }
           }
-        }
-        return "grey";
-      });
-      
+          return "grey";
+        })
+        .attr("stroke-width", function (linkData) {
+          for (let i = 0; i < arrayForKey.length; i++) {
+            if (
+              linkData.source.id == arrayForKey[i] ||
+              linkData.target.id == arrayForKey[i]
+            ) {
+              return 2; // Set the desired width for red links
+            }
+          }
+          return 0.5; // Set the default width for grey links
+        })
     });
-  })
-})
+  });
+});

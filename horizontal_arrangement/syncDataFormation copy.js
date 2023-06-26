@@ -1,21 +1,22 @@
 const fs = require("fs");
 const util = require("util");
+const path = require('path');
 
 // #####################################
 // For NEW data
 // New data requires another type of parsing
 // #####################################
 
-const inputFilesforPath = ["./data/paths_table_100620231126.csv"];
-const inputFilesforCounter = ["./data/counters_table_100620231126.csv"];
-const inputFilesforJob = ["./data/jobs_table_100620231126.csv"];
+let inputFilesforPath = ["./data/paths_table_100620231126.txt"];
+let inputFilesforCounter = ["./data/counters_table_100620231126.txt"];
+let inputFilesforJob = ["./data/jobs_table_100620231126.txt"];
 
 const inputFile = "nodes_link_path.csv";
 const inputFile2 = "device_counter.csv";
 const outputFile = "./outputData/output3.json";
 
 function readFile(pathFile, counterFile, jobFile) {
-  function processJobFile(filePath, maxValues, nodes, links,jobs) {
+  function processJobFile(filePath, maxValues, nodes, links, jobs) {
     return new Promise((resolve, reject) => {
       fs.readFile(filePath, "utf8", (error, csvData) => {
         if (error) {
@@ -41,7 +42,7 @@ function readFile(pathFile, counterFile, jobFile) {
             RequiredTime: values[5],
             JobState: values[6],
             ElapsedTime: values[7],
-            NodeList: values[8].split(",")
+            NodeList: values[8].split(","),
           };
           table.push(list);
         }
@@ -51,7 +52,7 @@ function readFile(pathFile, counterFile, jobFile) {
           maxValues: maxValues,
           nodes: nodes,
           links: links,
-          jobs : jobs,
+          jobs: jobs,
         };
 
         // // Convert the JSON object to a JSON string
@@ -222,9 +223,8 @@ function readFile(pathFile, counterFile, jobFile) {
             connections = columns[2].split("->");
           } else continue;
 
-
           const key = columns[1];
-          
+
           if (!jobMap.has(key)) {
             jobMap.set(key, []);
           }
@@ -240,10 +240,10 @@ function readFile(pathFile, counterFile, jobFile) {
             node2 = node2[0];
             // console.log(node1,node2);
             if (node1 === node2) continue;
-            if(!innerArray.includes(node1)){
+            if (!innerArray.includes(node1)) {
               innerArray.push(node1);
             }
-            if(!innerArray.includes(node2)){
+            if (!innerArray.includes(node2)) {
               innerArray.push(node2);
             }
             var source = node1;
@@ -334,7 +334,6 @@ function readFile(pathFile, counterFile, jobFile) {
           nodes.push(node);
         }
 
-
         // Iterate over the Map using a for...of loop
         for (const [key, value] of jobMap) {
           const pair = { job: key, nodes: value }; // Create an object with key-value pair
@@ -382,8 +381,8 @@ function readFile(pathFile, counterFile, jobFile) {
       );
     })
     .then((secondFileData) => {
-      const { maxValues, nodes, links,jobs } = secondFileData;
-      return processJobFile(jobFile, maxValues, nodes, links,jobs);
+      const { maxValues, nodes, links, jobs } = secondFileData;
+      return processJobFile(jobFile, maxValues, nodes, links, jobs);
     })
     .then((thirdFileData) => {
       var json = JSON.parse(thirdFileData);
@@ -405,6 +404,36 @@ function readFile(pathFile, counterFile, jobFile) {
 
 // Function to read files at regular intervals
 function readFilesAtIntervals(interval) {
+  const folderPath = "Data2";
+  // Read the contents of the folder
+  fs.readdir(folderPath, (err, files) => {
+    if (err) {
+      console.error("Error reading folder:", err);
+      return;
+    }
+    // Filter the files based on the prefix "counter_table_"
+    const filteredFilesForCounter = files.filter((file) =>
+      file.startsWith("counters_table_")
+    );
+    // Map the filtered files to their full file paths
+     inputFilesforCounter = filteredFilesForCounter.map((file) =>
+      path.join(folderPath, file)
+    );
+    const filteredFilesForPath = files.filter((file) =>
+      file.startsWith("paths_table_")
+    );
+     inputFilesforPath = filteredFilesForPath.map((file) =>
+      path.join(folderPath, file)
+    );
+    const filteredFilesForJob = files.filter((file) =>
+      file.startsWith("jobs_table_")
+    );
+     inputFilesforJob = filteredFilesForJob.map((file) =>
+      path.join(folderPath, file)
+    );
+    // console.log(fileLocations);
+  });
+
   let index = 0;
 
   function readNextFile() {
@@ -422,5 +451,5 @@ function readFilesAtIntervals(interval) {
 }
 
 // Usage example
-const interval = 5000; // Interval in milliseconds (e.g., 5000ms = 5 seconds)
+const interval = 2000; // Interval in milliseconds (e.g., 5000ms = 5 seconds)
 readFilesAtIntervals(interval);
