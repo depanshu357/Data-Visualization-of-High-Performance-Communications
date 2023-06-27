@@ -1,0 +1,20 @@
+[33m1681372[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m now runs on txt files instead of csv ones , spread out the nodes, toggle color of links on clicking
+[33m3ad284d[m minor changes
+[33m82f04b1[m links highlights on clicking a job node
+[33m5b8333b[m general
+[33m35c6625[m table added showing different job logs
+[33me113ec8[m made code for new data format
+[33m713b7c1[m rearranged folder structure
+[33mef34356[m made file format converter for easy access of data
+[33m5dc4e59[m removed all the 888 nodes and bunched them together which are having same leaf nodes
+[33m2dedac2[m it can now update data at regular intervals
+[33mf831911[m applied color shades based on max and min values
+[33md314b5a[m changes in output file
+[33m41e135d[m made file processing synchronous
+[33m729dbb5[m data Formation somewhat done
+[33m8808e9a[m arrangement of hpc nodes in 4 levels
+[33mc3dafd8[m general commit
+[33me21eece[m created circular arrangement of nodes
+[33m7f957bc[m general commit
+[33m2ecca29[m added levels for diff group values
+[33mb380e83[m first commit
