@@ -119,7 +119,7 @@ function makeGraph() {
     // Define the color scale
     const colorScaleHPC = d3
       .scaleLinear()
-      .domain([0, maxValues[1]]) // Specify the minimum and maximum values in your range
+      .domain([0, maxValues[6]]) // Specify the minimum and maximum values in your range
       .range(["#fda766", "#ff6200"]); // Specify the desired color range
     const colorScaleLeaf = d3
       .scaleLinear()

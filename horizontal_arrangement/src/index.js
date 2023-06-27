@@ -281,12 +281,15 @@ function readFile(pathFile, counterFile, jobFile, outputFile) {
           }
         }
 
+        let maxValueOfBhpc = -1;
+
         let groupValue = 5;
         for (let i = 0; i <= 52; i++) {
           let paddedNumber = ("00" + i).slice(-2);
           let nodeId = "Bhpc" + paddedNumber;
           groupValue = 4;
           var value = arrayofLeafSwitches[i].length - 1;
+          maxValueOfBhpc = Math.max(maxValueOfBhpc,value);
           const node = { id: nodeId, group: groupValue, value: value };
           nodes.push(node);
         }
@@ -352,6 +355,7 @@ function readFile(pathFile, counterFile, jobFile, outputFile) {
           jobs.push(pair); // Store the object in the result array
         }
 
+        maxValues.push(maxValueOfBhpc);
         // Create the JSON object
         // const jsonData = {
         //   maxValues: maxValues,
