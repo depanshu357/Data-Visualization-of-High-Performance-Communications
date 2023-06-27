@@ -54,7 +54,7 @@ d3.json(file2, function (error, graph) {
   const colorScaleHPC = d3
     .scaleLinear()
     .domain([0, maxValues[1]]) // Specify the minimum and maximum values in your range
-    .range(["#fda766", "#ff6200"]); // Specify the desired color range
+    .range(["#d4fc79", "#96e6a1"]); // Specify the desired color range
   const colorScaleLeaf = d3
     .scaleLinear()
     .domain([0, maxValues[2]]) // Specify the minimum and maximum values in your range
@@ -168,7 +168,7 @@ d3.json(file2, function (error, graph) {
       previousWidthofBhpc[i] = widthOfBhpc + previousWidthofBhpc[i - 1];
     } else previousWidthofBhpc[i] = widthOfBhpc;
   }
-  // console.log(previousWidthofBhpc);
+  console.log(previousWidthofBhpc);
   function getXPos(d, i) {
     const { id, value } = d;
     if (id.substring(0, 4) === "Bhpc") {
@@ -191,18 +191,18 @@ d3.json(file2, function (error, graph) {
       var x = centerX + gap * number - centerX / 1.5;
       return x;
     } else if (id[5] === "L") {
-      var gap = width / (1.6 * numNodes2);
+      var gap = width / (2 * numNodes2);
       var lastThreeLetters = id.slice(-2);
       var number = parseInt(lastThreeLetters, 10);
       if (id[3] === "2") number += 27;
-      var x = centerX + gap * number - centerX / 1.6;
+      var x = centerX + gap * number - centerX / 2;
       return x;
     } else if (id[5] === "S") {
-      var gap = width / (1.6 * numNodes1);
+      var gap = width / (2.2 * numNodes1);
       var lastThreeLetters = id.slice(-2);
       var number = parseInt(lastThreeLetters, 10);
       if (id[3] === "2") number += 18;
-      var x = centerX + gap * number - centerX / 1.6;
+      var x = centerX + gap * number - centerX / 2.2;
       return x;
     }
     return centerX;
@@ -260,24 +260,14 @@ d3.json(file2, function (error, graph) {
         return getXPos(d.source, i);
       })
       .attr("y1", function (d, i) {
-        let y1 =  getYPos(d.source, i);
-        let y2 = getYPos(d.target,i);
-        if(y1 === 20) return 31;
-        if(y1 < y2)y1 = y1 + 6;
-        else y1 = y1 - 6;
-        return y1;
+        return getYPos(d.source, i);
       })
       .attr("x2", function (d, i) {
         return getXPos(d.target, i);
       })
       .attr("y2", function (d, i) {
-        let y1 =  getYPos(d.source, i);
-        let y2 = getYPos(d.target,i);
-        if(y2 === 20) return 31;
-        if(y1 < y2)y2 = y2 - 6;
-        else y2 = y2 + 6;
-        return y2;
-      })
+        return getYPos(d.target, i);
+      });
   }
   // console.log(jobMap);
   
@@ -298,8 +288,7 @@ function handleMouseOver(d) {
     if (linkData.source === d || linkData.target === d) {
       return "red";
     } else return "grey";
-  })
-  .attr("opacity",0.3)
+  });
 
   // Show tooltip on mouseover
   tooltip.transition().duration(200).style("opacity", 0.9);
