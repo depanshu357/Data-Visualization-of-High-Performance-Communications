@@ -1,10 +1,9 @@
 const fs = require("fs");
 const util = require("util");
-const path = require('path');
+const path = require("path");
 // import fs from "fs";
 // import util from "util";
 // import path from "path";
-
 
 // #####################################
 // For NEW data
@@ -14,13 +13,21 @@ const path = require('path');
 let inputFilesforPath = ["./Data2/paths_table_100620231126.txt"];
 let inputFilesforCounter = ["./Data2/counters_table_100620231126.txt"];
 let inputFilesforJob = ["./Data2/jobs_table_100620231126.txt"];
+let outputFiles = ["./outputData/output4.json"];
 
 // const inputFile = "nodes_link_path.csv";
 // const inputFile2 = "device_counter.csv";
 // const outputFile = "./outputData/output3.json";
 
-function readFile(pathFile, counterFile, jobFile) {
-  function processJobFile(filePath, maxValues, nodes, links, jobs) {
+function readFile(pathFile, counterFile, jobFile, outputFile) {
+  function processJobFile(
+    filePath,
+    maxValues,
+    nodes,
+    links,
+    jobs,
+    outputFiles
+  ) {
     return new Promise((resolve, reject) => {
       fs.readFile(filePath, "utf8", (error, csvData) => {
         if (error) {
@@ -57,6 +64,7 @@ function readFile(pathFile, counterFile, jobFile) {
           nodes: nodes,
           links: links,
           jobs: jobs,
+          outputFiles: outputFiles,
         };
 
         // // Convert the JSON object to a JSON string
@@ -386,7 +394,14 @@ function readFile(pathFile, counterFile, jobFile) {
     })
     .then((secondFileData) => {
       const { maxValues, nodes, links, jobs } = secondFileData;
-      return processJobFile(jobFile, maxValues, nodes, links, jobs);
+      return processJobFile(
+        jobFile,
+        maxValues,
+        nodes,
+        links,
+        jobs,
+        outputFiles
+      );
     })
     .then((thirdFileData) => {
       var json = JSON.parse(thirdFileData);
@@ -420,22 +435,42 @@ function readFilesAtIntervals(interval) {
       file.startsWith("counters_table_")
     );
     // Map the filtered files to their full file paths
-     inputFilesforCounter = filteredFilesForCounter.map((file) =>
+    inputFilesforCounter = filteredFilesForCounter.map((file) =>
       path.join(folderPath, file)
     );
     const filteredFilesForPath = files.filter((file) =>
       file.startsWith("paths_table_")
     );
-     inputFilesforPath = filteredFilesForPath.map((file) =>
+    inputFilesforPath = filteredFilesForPath.map((file) =>
       path.join(folderPath, file)
     );
     const filteredFilesForJob = files.filter((file) =>
       file.startsWith("jobs_table_")
     );
-     inputFilesforJob = filteredFilesForJob.map((file) =>
+    inputFilesforJob = filteredFilesForJob.map((file) =>
       path.join(folderPath, file)
     );
     // console.log(fileLocations);
+
+    // Create an array of output file names based on counter file names
+    outputFiles = filteredFilesForCounter.map((file) => {
+      const regex = /\d{12}/;
+      const numbers = file.match(regex);
+
+      if (numbers && numbers.length > 0) {
+        const extractedNumber = numbers[0];
+        console.log(extractedNumber); // Output: 140620231238
+        // const counterFileName = file.slice(-12); // Get the last 12 characters of the counter file name
+        return `./outputData/output_${extractedNumber}.json`; // Construct the output file name
+      } else {
+        console.log("No 12-digit number found in the file name.");
+      }
+      return `./outputData/output_not_matched.json`;
+
+    });
+
+    // Print the output file names
+    // console.log(outputFiles);
   });
 
   let index = 0;
@@ -445,7 +480,8 @@ function readFilesAtIntervals(interval) {
       const pathFile = inputFilesforPath[index];
       const counterFile = inputFilesforCounter[index];
       const jobFile = inputFilesforJob[index];
-      readFile(pathFile, counterFile, jobFile);
+      const outputFile = outputFiles[index];
+      readFile(pathFile, counterFile, jobFile, outputFile);
       index++;
       setTimeout(readNextFile, interval);
     }
@@ -454,6 +490,6 @@ function readFilesAtIntervals(interval) {
   readNextFile();
 }
 
-// Usage example
 const interval = 2000; // Interval in milliseconds (e.g., 5000ms = 5 seconds)
 readFilesAtIntervals(interval);
+console.log(outputFiles);
