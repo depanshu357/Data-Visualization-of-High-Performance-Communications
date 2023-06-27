@@ -63,6 +63,8 @@ outputFiles.forEach((name) => {
 // Add event listener to log the selected name
 select.addEventListener("change", (event) => {
   const selectedName = event.target.value;
+  let container = d3.select("svg");
+  container.selectAll("*").remove();
   file2 = selectedName;
   makeGraph();
   console.log("Selected Name:", selectedName);
@@ -361,11 +363,8 @@ function handleMouseOver(d) {
     .attr("opacity", 0.3);
 
   // Show tooltip on mouseover
-  tooltip.transition().duration(200).style("opacity", 0.9);
-  tooltip.html(d.id);
-  // Show tooltip on mouseover
-  tooltip.transition().duration(200).style("opacity", 0.9);
-  tooltip.html(d.id);
+  // tooltip.transition().duration(200).style("opacity", 0.9);
+  // tooltip.html(d.id);
 
   d3.select(this).style("stroke", "black").style("opacity", 1);
 }
