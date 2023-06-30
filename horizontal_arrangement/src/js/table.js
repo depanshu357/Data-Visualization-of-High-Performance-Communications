@@ -13,26 +13,6 @@ function format(d) {
   );
 }
 
-let colorIndex = 0;
-var colorArray = [
-  "#FF0000",
-  "#00FF00",
-  "#0000FF",
-  "#FFFF00",
-  "#FF00FF",
-  "#00FFFF",
-  "#FFA500",
-  "#FFC0CB",
-  "#00FF7F",
-  "#9370DB",
-];
-
-function getDifferentColors() {
-  // colorIndex++;
-  colorIndex = colorIndex % 10;
-  return colorArray[colorIndex];
-}
-
 const jobMap = new Map();
 
 $(document).ready(function () {
@@ -66,6 +46,7 @@ $(document).ready(function () {
   $("#example tbody").on("click", "td.dt-control", function () {
     var tr = $(this).closest("tr");
     var row = table.row(tr);
+
     if (row.child.isShown()) {
       // This row is already open - close it
       row.child.hide();
@@ -93,60 +74,43 @@ $(document).ready(function () {
 $(document).ready(function () {
   d3.json(file2, function (error, graph) {
     if (error) throw error;
-
-    console.log(graph.jobs.length);
-    console.log(graph.jobs)
+    // console.log(file2)
+    // console.log(graph.jobs)
     for (const item of graph.jobs) {
-      const { job, nodes } = item;
-      // console.log(nodes);
-      if (jobMap.has(job)) {
-        // If the job already exists in the map, append the nodes to the existing array
-        jobMap.get(job).push(nodes);
-      } else {
-        // If the job is encountered for the first time, create a new array with the nodes
-        jobMap.set(job, [nodes]);
-      }
+      const { job, nodes,nodesM } = item;
+      // console.log(item)
+      jobMap.set(job, nodesM);
     }
-    let selected = document.querySelector(".selected");
-
+    // console.log(jobMap)
     $("#example tbody").on("click", "tr", function () {
+      // console.log(jobMap)
+      // console.log(jobMap.get("1008448.un05"))
       const sorting1Element = $(this).find("td.sorting_1");
       const content = sorting1Element.text();
-      // console.log(selected);
-      colorIndex++;
-      console.log(colorIndex);
-      const arrayForKey = jobMap.get(content);
-      console.log(arrayForKey);
-      link
-        .attr("stroke", function (linkData) {
-          for (let i = 0; i < arrayForKey.length - 1; i++) {
-            if (
-              (linkData.source.id === arrayForKey[i]) ||
-              (linkData.target.id === arrayForKey[i]) 
-            ) {
-              console.log("colorit")
-              return getDifferentColors();
-            }else if(arrayForKey[i].substring(0,3) === "hpc"){
-              return getDifferentColors();
-              
-            }else if(arrayForKey[i+1].substring(0,3) === "hpc"){
-              return getDifferentColors();
-
+      console.log(content)
+      let arrayForKey = jobMap.get(content);
+      // console.log(content,arrayForKey)
+      link.attr("stroke", function (linkData) {
+        // console.log(linkData.source.id,content)
+        // console.log(arrayForKey)
+        if(arrayForKey)
+        for (let i = 0; i < arrayForKey.length; i++) {
+          // console.log(arrayForKey[i]);
+          if (
+            linkData.source.id == arrayForKey[i][0] &&
+            linkData.target.id == arrayForKey[i][1]
+          ) {
+            return "red";
+          }else if("hpc"== arrayForKey[i][0].substring(0,3) &&
+            linkData.target.id == arrayForKey[i][1]){
+              return "red";
+            }else if("hpc"== arrayForKey[i][1].substring(0,3) &&
+            linkData.target.id == arrayForKey[i][0]){
+              return "red"
             }
-          }
-          return "grey";
-        })
-        .attr("stroke-width", function (linkData) {
-          for (let i = 0; i < arrayForKey.length; i++) {
-            if (
-              linkData.source.id == arrayForKey[i] ||
-              linkData.target.id == arrayForKey[i]
-            ) {
-              return 2; // Set the desired width for red links
-            }
-          }
-          return 0.5; // Set the default width for grey links
-        });
+        }
+        return "grey";
+      });
     });
   });
 });

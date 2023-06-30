@@ -4,7 +4,7 @@ var svg = d3.select("svg"),
 svg.attr("height", 350);
 
 var file1 = "output.json";
-var file2 = "./outputData/output3.json";
+var file2 = "./outputData/output_140620231744.json";
 
 // ################### For file selection ################
 // Array of names
