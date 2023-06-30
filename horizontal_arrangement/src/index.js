@@ -252,12 +252,8 @@ function readFile(pathFile, counterFile, jobFile, outputFile) {
             node2 = node2[0];
             // console.log(node1,node2);
             if (node1 === node2) continue;
-            if (!innerArray.includes(node1)) {
               innerArray.push(node1);
-            }
-            if (!innerArray.includes(node2)) {
               innerArray.push(node2);
-            }
             var source = node1;
             var target = node2;
             if (source.substring(0, 3) === "hpc") {

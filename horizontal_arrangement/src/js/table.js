@@ -14,13 +14,23 @@ function format(d) {
 }
 
 let colorIndex = 0;
-var colorArray = ["#FF0000", "#00FF00", "#0000FF", "#FFFF00", "#FF00FF", "#00FFFF", "#FFA500", "#FFC0CB", "#00FF7F", "#9370DB"];
+var colorArray = [
+  "#FF0000",
+  "#00FF00",
+  "#0000FF",
+  "#FFFF00",
+  "#FF00FF",
+  "#00FFFF",
+  "#FFA500",
+  "#FFC0CB",
+  "#00FF7F",
+  "#9370DB",
+];
 
-
-function getDifferentColors(){
-    // colorIndex++;
-    colorIndex = colorIndex%10;
-    return colorArray[colorIndex];
+function getDifferentColors() {
+  // colorIndex++;
+  colorIndex = colorIndex % 10;
+  return colorArray[colorIndex];
 }
 
 const jobMap = new Map();
@@ -83,11 +93,19 @@ $(document).ready(function () {
 $(document).ready(function () {
   d3.json(file2, function (error, graph) {
     if (error) throw error;
-    
+
     console.log(graph.jobs.length);
+    console.log(graph.jobs)
     for (const item of graph.jobs) {
       const { job, nodes } = item;
-      jobMap.set(job, nodes);
+      // console.log(nodes);
+      if (jobMap.has(job)) {
+        // If the job already exists in the map, append the nodes to the existing array
+        jobMap.get(job).push(nodes);
+      } else {
+        // If the job is encountered for the first time, create a new array with the nodes
+        jobMap.set(job, [nodes]);
+      }
     }
     let selected = document.querySelector(".selected");
 
@@ -96,16 +114,24 @@ $(document).ready(function () {
       const content = sorting1Element.text();
       // console.log(selected);
       colorIndex++;
-    console.log(colorIndex)
+      console.log(colorIndex);
       const arrayForKey = jobMap.get(content);
+      console.log(arrayForKey);
       link
         .attr("stroke", function (linkData) {
-          for (let i = 0; i < arrayForKey.length; i++) {
+          for (let i = 0; i < arrayForKey.length - 1; i++) {
             if (
-              linkData.source.id == arrayForKey[i] ||
-              linkData.target.id == arrayForKey[i]
+              (linkData.source.id === arrayForKey[i]) ||
+              (linkData.target.id === arrayForKey[i]) 
             ) {
+              console.log("colorit")
               return getDifferentColors();
+            }else if(arrayForKey[i].substring(0,3) === "hpc"){
+              return getDifferentColors();
+              
+            }else if(arrayForKey[i+1].substring(0,3) === "hpc"){
+              return getDifferentColors();
+
             }
           }
           return "grey";
@@ -120,7 +146,7 @@ $(document).ready(function () {
             }
           }
           return 0.5; // Set the default width for grey links
-        })
+        });
     });
   });
 });
