@@ -349,8 +349,10 @@ function readFile(pathFile, counterFile, jobFile, outputFile) {
         for (const [key, value] of jobMap) {
           const pair = { job: key, nodes: value, nodesM: [] }; // Create an object with key-value pair
           for (let i = 0; i < value.length - 1; i++) {
-            const adjacentPair = [value[i], value[i + 1]]; // Create an array of adjacent elements
-            pair.nodesM.push(adjacentPair); // Push the adjacentPair to the nodes array
+            if(value[i] != value[i+1]){
+              const adjacentPair = [value[i], value[i + 1]]; // Create an array of adjacent elements
+              pair.nodesM.push(adjacentPair); // Push the adjacentPair to the nodes array
+            }
           }
           jobs.push(pair); // Store the object in the result array
         }
