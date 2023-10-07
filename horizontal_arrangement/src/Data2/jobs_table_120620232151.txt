@@ -12,10 +12,10 @@ JobID UserName QueueName TotalNodes TotalCores RequiredTime JobState ElaspedTime
 1007209.un05 rshreya medium 2 40 96:00 R 85:17 hpc700,hpc699
 1007387.un05 rshreya medium 2 40 96:00 R 64:22 hpc647,hpc638
 1008596.un05 anandha2 large 16 320 96:00 R 51:23 hpc401,hpc411,hpc311,hpc064,hpc084,hpc375,hpc398,hpc412,hpc431,hpc219,hpc220,hpc221,hpc223,hpc268,hpc269,hpc381
-1007673.un05 bgovind small 2 40 120:0 R 106:3 hpc771,hpc773
-1007679.un05 meesalas small 2 40 120:0 R 64:30 hpc747,hpc745
-1007686.un05 kavatar small 2 40 120:0 R 09:09 hpc811,hpc818
-1007777.un05 vthakkur large 10 200 96:00 R 82:50 hpc233,hpc234,hpc437,hpc438,hpc170,hpc203,hpc320,hpc330,hpc344,hpc354
+1007673.un05 username small 2 40 120:0 R 106:3 hpc771,hpc773
+1007679.un05 username small 2 40 120:0 R 64:30 hpc747,hpc745
+1007686.un05 username small 2 40 120:0 R 09:09 hpc811,hpc818
+1007777.un05 vthakkur large 10 200 96:00 R 82:50 hpc233,hpc234,hpc437
 1008882.un05 shaik22 large 16 320 96:00 R 28:27 hpc240,hpc368,hpc387,hpc113,hpc114,hpc115,hpc236,hpc238,hpc263,hpc281,hpc284,hpc287,hpc288,hpc289,hpc290,hpc292
 1007856.un05 tvinay small 2 40 120:0 R 105:4 hpc787,hpc796
 1007864.un05 anurags2 small 2 40 120:0 R 105:4 hpc788,hpc801

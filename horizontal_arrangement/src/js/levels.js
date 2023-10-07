@@ -1,8 +1,8 @@
 var svg = d3.select("svg"),
   width = +svg.attr("width"),
   height = +svg.attr("height");
-svg.attr("height", 350);
-
+svg.attr("height",480);
+width = width - 20;
 var file1 = "output.json";
 var file2 = "./outputData/output_140620231744.json";
 
@@ -52,11 +52,60 @@ let outputFiles = [
 // Create select input element
 const select = document.createElement("select");
 
+function formatDate(dateString) {
+  // Extracting components from the given string
+  var day = dateString.substring(0, 2);
+  var month = dateString.substring(2, 4);
+  var year = dateString.substring(4, 8);
+  var hour = dateString.substring(8, 10);
+  var minute = dateString.substring(10, 12);
+  console.log(dateString, day, month, year, hour, minute);
+
+  // Creating a new Date object
+  var date = new Date(year, month - 1, day, hour, minute);
+
+  // Constructing the readable text format
+  var formattedDate = date.toLocaleString("en-US", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
+  return day + "/" + month + "/" + year + "," + hour + ":" + minute;
+}
+
+function extractDateTime(filename) {
+  // Extracting the date and time substring using regular expression
+  var dateTimeMatch = filename.match(/(\d{2})(\d{2})(\d{4})(\d{2})(\d{2})/);
+  if (dateTimeMatch) {
+    var day = dateTimeMatch[1];
+    var month = dateTimeMatch[2];
+    var year = dateTimeMatch[3];
+    var hour = dateTimeMatch[4];
+    var minute = dateTimeMatch[5];
+
+    var formattedDateTime = day + month + year + hour + minute;
+    return formattedDateTime;
+  }
+
+  return null; // Return null if no match found
+}
+
+// Example usage
+// var inputDateString = '130720231530';
+// var formattedDate = formatDate(inputDateString);
+// console.log(formattedDate);
+
 // Add options to select input
 outputFiles.forEach((name) => {
+  console.log(name.substring(20, 12));
   const option = document.createElement("option");
   option.value = name;
-  option.textContent = name;
+  option.textContent = formatDate(name.substring(20, 32));
   select.appendChild(option);
 });
 
@@ -252,24 +301,24 @@ function makeGraph() {
         // console.log(x)
         return x;
       } else if (id[4] === "W") {
-        var gap = width / (1.5 * numNodes3);
+        var gap = (width) / (1.01 * numNodes3);
         var lastThreeLetters = id.slice(-2);
         var number = parseInt(lastThreeLetters, 10);
-        var x = centerX + gap * number - centerX / 1.5;
+        var x = centerX + gap * number - centerX / 1.01;
         return x;
       } else if (id[5] === "L") {
-        var gap = width / (1.6 * numNodes2);
+        var gap = width / (1.01 * numNodes2);
         var lastThreeLetters = id.slice(-2);
         var number = parseInt(lastThreeLetters, 10);
         if (id[3] === "2") number += 27;
-        var x = centerX + gap * number - centerX / 1.6;
+        var x = centerX + gap * number - centerX / 1.01;
         return x;
       } else if (id[5] === "S") {
-        var gap = width / (1.6 * numNodes1);
+        var gap = width / (1.01 * numNodes1);
         var lastThreeLetters = id.slice(-2);
         var number = parseInt(lastThreeLetters, 10);
         if (id[3] === "2") number += 18;
-        var x = centerX + gap * number - centerX / 1.6;
+        var x = centerX + gap * number - centerX / 1.01;
         return x;
       }
       return centerX;
@@ -279,16 +328,16 @@ function makeGraph() {
       if (id.substring(0, 4) === "Bhpc") {
         var lastThreeLetters = id.slice(-3);
         var number = parseInt(lastThreeLetters, 10);
-        let y = 320;
+        let y = 460;
         // if (number <= 222) y = 400;
         // else if (number > 222 && number <= 444) y = 420;
         // else if (number > 444 && number <= 666) y = 440;
         // else if (number > 666) y = 460;
         return y;
       } else if (id[4] === "W") {
-        return 220;
+        return 360;
       } else if (id[5] === "L") {
-        return 120;
+        return 220;
       } else if (id[5] === "S") {
         return 20;
       }
@@ -419,12 +468,7 @@ function format(d) {
 
 const jobMap = new Map();
 
-$(document).ready(function () {
-  
-
-  
-});
-
+$(document).ready(function () {});
 
 function makeTable() {
   var table = $("#example").DataTable({
@@ -474,23 +518,22 @@ function makeTable() {
   $("#example tbody").on("click", "tr", function () {
     $("#example tbody tr").removeClass("selected"); // Remove "selected" class from all rows
     $(this).toggleClass("selected");
-    console.log("clicked1")
+    console.log("clicked1");
   });
-  
-  $("#example tbody").on("click", "tr", function () {
-    console.log("clicked2")
-    // console.log(jobMap)
-    console.log( table.row( this ).data() );
-    var rowData = table.row( this ).data();
-    console.log(rowData.JobID)
 
+  $("#example tbody").on("click", "tr", function () {
+    console.log("clicked2");
+    // console.log(jobMap)
+    console.log(table.row(this).data());
+    var rowData = table.row(this).data();
+    console.log(rowData.JobID);
 
     d3.json(file2, function (error, graph) {
       if (error) throw error;
       // console.log(file2)
       // console.log(graph.jobs)
       for (const item of graph.jobs) {
-        const { job, nodes,nodesM } = item;
+        const { job, nodes, nodesM } = item;
         // console.log(item)
         jobMap.set(job, nodesM);
       }
@@ -498,82 +541,93 @@ function makeTable() {
     });
     // console.log(jobMap.get("1008448.un05"))
     const content = rowData.JobID;
-    console.log(content)
+    console.log(content);
     let arrayForKey = jobMap.get(content);
     // console.log(content,arrayForKey)
     const filteredLinks = link.filter((linkData) => {
       // Return true for links that meet the condition
-      if(arrayForKey)
-      for (let i = 0; i < arrayForKey.length; i++) {
-        // console.log(arrayForKey[i]);
-        if (
-          linkData.source.id == arrayForKey[i][0] &&
-          linkData.target.id == arrayForKey[i][1]
-        ) {
-          return true;
-        }else if("hpc"== arrayForKey[i][0].substring(0,3) &&
-          linkData.target.id == arrayForKey[i][1]){
+      if (arrayForKey)
+        for (let i = 0; i < arrayForKey.length; i++) {
+          // console.log(arrayForKey[i]);
+          if (
+            linkData.source.id == arrayForKey[i][0] &&
+            linkData.target.id == arrayForKey[i][1]
+          ) {
             return true;
-          }else if("hpc"== arrayForKey[i][1].substring(0,3) &&
-          linkData.target.id == arrayForKey[i][0]){
+          } else if (
+            "hpc" == arrayForKey[i][0].substring(0, 3) &&
+            linkData.target.id == arrayForKey[i][1]
+          ) {
+            return true;
+          } else if (
+            "hpc" == arrayForKey[i][1].substring(0, 3) &&
+            linkData.target.id == arrayForKey[i][0]
+          ) {
             return true;
           }
-      }
+        }
       return false;
     });
 
-    filteredLinks.attr("stroke","red")
-      .attr("strok-width",2)
+    // filteredLinks.attr("stroke","red")
+    //   .attr("stroke-width","2")
 
-    link.attr("stroke", function (linkData) {
-      // console.log(linkData.source.id,content)
-      // console.log(arrayForKey)
-      if(arrayForKey)
-      for (let i = 0; i < arrayForKey.length; i++) {
-        // console.log(arrayForKey[i]);
-        if (
-          linkData.source.id == arrayForKey[i][0] &&
-          linkData.target.id == arrayForKey[i][1]
-        ) {
-          return "red";
-        }else if("hpc"== arrayForKey[i][0].substring(0,3) &&
-          linkData.target.id == arrayForKey[i][1]){
-            return "red";
-          }else if("hpc"== arrayForKey[i][1].substring(0,3) &&
-          linkData.target.id == arrayForKey[i][0]){
-            return "red"
+    link
+      .attr("stroke", function (linkData) {
+        // console.log(linkData.source.id,content)
+        // console.log(arrayForKey)
+        if (arrayForKey)
+          for (let i = 0; i < arrayForKey.length; i++) {
+            // console.log(arrayForKey[i]);
+            if (
+              linkData.source.id == arrayForKey[i][0] &&
+              linkData.target.id == arrayForKey[i][1]
+            ) {
+              return "red";
+            } else if (
+              "hpc" == arrayForKey[i][0].substring(0, 3) &&
+              linkData.target.id == arrayForKey[i][1]
+            ) {
+              return "red";
+            } else if (
+              "hpc" == arrayForKey[i][1].substring(0, 3) &&
+              linkData.target.id == arrayForKey[i][0]
+            ) {
+              return "red";
+            }
           }
-      }
-      return "grey";
-    })
-    .attr("stroke-width", function (linkData) {
-      // console.log(linkData.source.id,content)
-      // console.log(arrayForKey)
-      if(arrayForKey)
-      for (let i = 0; i < arrayForKey.length; i++) {
-        if (
-          linkData.source.id == arrayForKey[i][0] &&
-          linkData.target.id == arrayForKey[i][1]
-        ) {
-          return "2";
-        }else if("hpc"== arrayForKey[i][0].substring(0,3) &&
-          linkData.target.id == arrayForKey[i][1]){
-            return "2";
-          }else if("hpc"== arrayForKey[i][1].substring(0,3) &&
-          linkData.target.id == arrayForKey[i][0]){
-            return "2"
+        return "grey";
+      })
+      .attr("stroke-width", function (linkData) {
+        // console.log(linkData.source.id,content)
+        // console.log(arrayForKey)
+        if (arrayForKey)
+          for (let i = 0; i < arrayForKey.length; i++) {
+            if (
+              linkData.source.id == arrayForKey[i][0] &&
+              linkData.target.id == arrayForKey[i][1]
+            ) {
+              return "2";
+            } else if (
+              "hpc" == arrayForKey[i][0].substring(0, 3) &&
+              linkData.target.id == arrayForKey[i][1]
+            ) {
+              return "2";
+            } else if (
+              "hpc" == arrayForKey[i][1].substring(0, 3) &&
+              linkData.target.id == arrayForKey[i][0]
+            ) {
+              return "2";
+            }
           }
-      }
-      return "0.5";
-    })
+        return "0.5";
+      });
   });
 
-  $("#button").click(function () {
-    // alert(table.rows(".selected").data());
-    console.log(table.rows(".selected").data().toArray());
-  });
+  // $("#button").click(function () {
+  //   // alert(table.rows(".selected").data());
+  //   console.log(table.rows(".selected").data().toArray());
+  // });
 }
 
 // ############### For highlighting of links on clicking a particular job id #########################
-
-
